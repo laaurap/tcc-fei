@@ -1,0 +1,10 @@
+﻿version: "3"
+agent:
+    authtoken: 3GKxt3Vg6V3lZM6HZqRV8jXd2h8_5GLS5YAy34e5bYRE8jTfF
+tunnels:
+  api:
+    proto: http
+    addr: 8000
+  n8n:
+    proto: http
+    addr: 5678

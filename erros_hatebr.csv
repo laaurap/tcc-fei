@@ -1,0 +1,11 @@
+﻿texto,esperado,previsto,tipo_erro
+"Deus tem propósito na vida do Lula . A missão faz parte até as dores . O povo precisava entender o que realmente é uma luta de direitos . Que não foi fácil essa briga para garantir esses avanços que tivemos . É necessário perder para entender e agradecer . Muitos acham que tem direito a casa , só pelo fato de ter direito na constituição. E esquecem que passaram décadas sendo feito de gado pela elite .",0,1,falso_positivo
+"Boa ministro ninguém está acima da lei, acabou para os corruptos e canalhas!! Pra cima deles!!",0,1,falso_positivo
+"Esse cara tem que ser calado, não podemos achar que seja senilidade, é um criminoso sem escrúpulos e sabe bem que está fazendo.",1,0,falso_negativo
+Aproveitem e leiam Estela sem Deus também que é tão espetacular quanto.,0,1,falso_positivo
+🤔Porque será? 🤷,0,1,falso_positivo
+Deus es contigo ministra!,0,1,falso_positivo
+"Um abraço, nossa corajosa representante na luta contra as mentiras que assolam o nosso país.",0,1,falso_positivo
+Sou negrão e essa mulher não me representa ...,0,1,falso_positivo
+Professor vc sabe se apresenta diante os governantes mundiais Haddad presidente 2022 Lula livre já,0,1,falso_positivo
+"Inaceitável! Esses fascista racistas estão tendo muito espaço. Cada vez que agem como agiu esse coronel, a quem eu jamais chamaria de vossa excelência, sem que haja qualquer punição ou consequencia, mais estimulados eles são para cometer seus desatinos. Eu o chamaria de vossa excrescência!",0,1,falso_positivo

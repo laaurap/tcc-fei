@@ -1,0 +1,21 @@
+
+# --- Núcleo do projeto original (transcrição e CLI) ---
+faster-whisper==1.1.1
+rich==13.9.4
+
+# --- Análise de texto (spaCy + BERT) ---
+spacy==3.7.5
+transformers==4.42.4
+torch==2.3.1
+sentencepiece==0.2.0
+
+# --- RAG (busca por similaridade) ---
+sentence-transformers==3.0.1
+
+# --- Servidor / integração Twilio ---
+fastapi==0.111.0
+uvicorn[standard]==0.30.1
+python-multipart==0.0.9
+twilio==9.2.3
+python-dotenv==1.0.1
+requests==2.32.3
