@@ -6,6 +6,8 @@ Avaliação binária do sistema:
 - SIM = há indício de violência psicológica
 """
 
+import csv
+
 from analyzer import analisar_texto
 
 from sklearn.metrics import (
@@ -80,6 +82,21 @@ y_true = [
     "SIM", "SIM", "SIM", "SIM", "SIM"
 ]
 
+# Conjunto pequeno de verificação contextual; não é representativo nem deve ser usado
+# como base de treino sem revisão e ampliação dos exemplos.
+with open("dataset/contextos_violencia_psicologica.csv", encoding="utf-8-sig", newline="") as arquivo:
+    contextos = list(csv.DictReader(arquivo))
+
+if not contextos or any(
+    not item.get("texto") or item.get("rotulo") not in {"NAO", "SIM"}
+    for item in contextos
+):
+    raise ValueError("O dataset contextual precisa ter textos e rótulos NAO/SIM válidos.")
+
+indice_contextual_inicial = len(textos)
+textos.extend(item["texto"] for item in contextos)
+y_true.extend(item["rotulo"] for item in contextos)
+
 
 # =========================================================
 # EXECUÇÃO DO MODELO
@@ -144,6 +161,23 @@ print("===================================================\n")
 print(classification_report(
     y_true,
     y_pred,
+    labels=["NAO", "SIM"],
+    target_names=["NÃO", "SIM"],
+    zero_division=0
+))
+
+indices_contextuais = range(indice_contextual_inicial, len(textos))
+
+y_true_contextuais = [y_true[i] for i in indices_contextuais]
+y_pred_contextuais = [y_pred[i] for i in indices_contextuais]
+
+print("\n===================================================")
+print("RESULTADOS DO RECORTE CONTEXTUAL")
+print("===================================================\n")
+print(f"Acurácia contextual: {accuracy_score(y_true_contextuais, y_pred_contextuais):.2%}\n")
+print(classification_report(
+    y_true_contextuais,
+    y_pred_contextuais,
     labels=["NAO", "SIM"],
     target_names=["NÃO", "SIM"],
     zero_division=0
