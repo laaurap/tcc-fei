@@ -4,11 +4,18 @@ Analisa texto em busca de violência psicológica usando
 spaCy (pré-processamento) + HuggingFace XLM-RoBERTa / BERT (classificação Zero-Shot) + RAG.
 """
 
+import re
+
 import spacy
 from transformers import pipeline
 import torch
 
 from rag import buscar_referencias, gerar_justificativa_fundamentada
+from contexto import (
+    ROTULOS_INTENCAO_CONTEXTO,
+    eh_contexto_de_resolucao,
+    neutralizar_expressoes,
+)
 
 # Categorias de violência psicológica e descrições para o modelo zero-shot
 CATEGORIAS = {
@@ -40,7 +47,7 @@ PALAVRAS_POSITIVAS = [
 ]
 
 # --- Parâmetros de decisão ---
-LIMIAR = 0.85         # nota mínima para uma categoria ser considerada (ajustado p/ WhatsApp)
+LIMIAR = 0.65         # nota mínima para uma categoria ser considerada (ajustado p/ WhatsApp)
 MARGEM_CATEGORIAS = 0.05  # só são listadas categorias até 5 pontos abaixo da maior nota
 MAX_CATEGORIAS = 3        # máximo de categorias listadas na resposta
 
@@ -86,8 +93,24 @@ def _texto_e_positivo(texto: str) -> bool:
     return qtd_positivas >= 2 and qtd_agressivas == 0
 
 
+def _tem_conteudo_apos_neutralizacao(texto: str, expressoes: list[str]) -> bool:
+    restante = texto
+    for expressao in expressoes:
+        restante = re.sub(re.escape(expressao), " ", restante, flags=re.IGNORECASE)
+
+    palavras_contextuais = {"ta", "tá", "to", "tô", "está", "estou"}
+    return any(
+        token.is_alpha and not token.is_stop and token.lower_ not in palavras_contextuais
+        for token in _nlp(restante)
+    )
+
+
 def analisar_texto(texto: str) -> dict:
     """Pipeline completo de análise NLP + RAG."""
+    # --- Contexto: reescreve expressões figuradas (ex.: "matando de rir") ---
+    texto_original = texto
+    texto, expressoes_neutralizadas = neutralizar_expressoes(texto_original)
+
     if _texto_e_positivo(texto):
         return {
             "veredicto": "NAO",
@@ -97,7 +120,8 @@ def analisar_texto(texto: str) -> dict:
             "trechos_relevantes": [],
             "justificativa": "O texto apresenta contexto predominantemente positivo ou afetivo. Nenhum indicador de violência psicológica foi identificado.",
             "recomendacao": "Nenhuma ação necessária com base nesta mensagem.",
-            "referencias": []
+            "referencias": [],
+            "expressoes_neutralizadas": expressoes_neutralizadas,
         }
 
     doc = _nlp(texto)
@@ -105,13 +129,28 @@ def analisar_texto(texto: str) -> dict:
     if not sentencas:
         sentencas = [texto]
 
+    doc_original = _nlp(texto_original) if expressoes_neutralizadas else None
+    sentencas_originais = (
+        [sent.text.strip() for sent in doc_original.sents if sent.text.strip()]
+        if doc_original is not None
+        else sentencas
+    )
+    if not sentencas_originais:
+        sentencas_originais = [texto_original]
+
     labels_descricoes = list(CATEGORIAS.values())
     labels_chaves = list(CATEGORIAS.keys())
 
     scores_por_categoria = {cat: 0.0 for cat in labels_chaves}  # maior nota de cada categoria
     scores_por_sentenca = []                                     # [(sentença, {categoria: nota})]
 
-    for sentenca in sentencas:
+    for sentenca, sentenca_original in zip(sentencas, sentencas_originais):
+        if expressoes_neutralizadas and not _tem_conteudo_apos_neutralizacao(
+            sentenca_original, expressoes_neutralizadas
+        ):
+            scores_por_sentenca.append((sentenca_original, {}))
+            continue
+
         resultado_hf = _classificador(
             sentenca,
             candidate_labels=labels_descricoes,
@@ -123,9 +162,27 @@ def analisar_texto(texto: str) -> dict:
         for label_desc, score in zip(resultado_hf["labels"], resultado_hf["scores"]):
             chave_cat = labels_chaves[labels_descricoes.index(label_desc)]
             notas_sentenca[chave_cat] = score
+
+        resultado_contexto = _classificador(
+            sentenca_original,
+            candidate_labels=list(ROTULOS_INTENCAO_CONTEXTO),
+            hypothesis_template="O texto expressa: {}.",
+            multi_label=False,
+        )
+        score_dialogo = resultado_contexto["scores"][
+            resultado_contexto["labels"].index(ROTULOS_INTENCAO_CONTEXTO[0])
+        ]
+        if eh_contexto_de_resolucao(
+            score_dialogo,
+            sentenca,
+        ):
+            scores_por_sentenca.append((sentenca_original, {}))
+            continue
+
+        for chave_cat, score in notas_sentenca.items():
             if score > scores_por_categoria[chave_cat]:
                 scores_por_categoria[chave_cat] = score
-        scores_por_sentenca.append((sentenca, notas_sentenca))
+        scores_por_sentenca.append((sentenca_original, notas_sentenca))
 
     # --- Veredicto e nível de risco ---
     # Calculados a partir de todas as categorias acima do limiar (regra original,
@@ -146,7 +203,7 @@ def analisar_texto(texto: str) -> dict:
 
     tipos_identificados = [NOME_CATEGORIAS_FORMATADO.get(c, c) for c in selecionadas]
     trechos_relevantes = [s for s, notas in scores_por_sentenca
-                          if any(notas[c] >= LIMIAR for c in selecionadas)]
+                          if any(notas.get(c, 0.0) >= LIMIAR for c in selecionadas)]
     score_exibido = (sum(scores_por_categoria[c] for c in selecionadas) / len(selecionadas)
                      if selecionadas else 0.0)
     n = len(selecionadas)
@@ -156,6 +213,9 @@ def analisar_texto(texto: str) -> dict:
         veredicto = "NAO"
         nivel_risco = "NENHUM"
         justificativa = "O modelo não identificou indicadores significativos de violência psicológica na mensagem."
+        if expressoes_neutralizadas:
+            exemplos = ", ".join(f"'{e}'" for e in expressoes_neutralizadas)
+            justificativa += f" Expressões figuradas ({exemplos}) foram tratadas como linguagem do dia a dia."
     elif qtd == 1 and score_geral < 0.65:
         veredicto = "POSSIVEL"
         nivel_risco = "BAIXO"
@@ -211,4 +271,5 @@ def analisar_texto(texto: str) -> dict:
         "justificativa": justificativa,
         "recomendacao": recomendacao,
         "referencias": [r["id"] for r in referencias_usadas],
+        "expressoes_neutralizadas": expressoes_neutralizadas,
     }

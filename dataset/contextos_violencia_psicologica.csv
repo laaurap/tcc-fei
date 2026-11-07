@@ -1,0 +1,17 @@
+id,cenario,texto,rotulo
+CTX01,expressao_idiomatica,"Você me mata de rir.",NAO
+CTX02,humor_em_relato,"Bla bla você não veio ontem bla bla bla aquela história me mata de rir",NAO
+CTX03,humor_em_relato,"Você não veio ontem, mas aquela história me mata de rir.",NAO
+CTX04,humor_meme,"Aquele meme me mata de rir, vou te mandar.",NAO
+CTX05,citacao_ficcional,"No filme, o personagem diz 'vou matar você'; achei a cena engraçada.",NAO
+CTX06,conversa_sobre_sentimentos,"Fiquei triste com o que aconteceu, mas quero conversar e resolver.",NAO
+CTX07,humor_com_insulto,"Você me mata de rir, sua inútil.",SIM
+CTX08,ameaca_condicional,"Você não veio ontem. Se fizer isso de novo, vou acabar com você.",SIM
+CTX09,humor_com_humilhacao,"Essa história me mata de rir; você é inútil e não faz nada direito.",SIM
+CTX10,gaslighting_contextual,"Você é louca, isso nunca aconteceu. Pare de inventar coisas.",SIM
+CTX11,dialogo_com_sentimento,"Estou magoada com aquilo e gostaria de conversar para resolvermos.",NAO
+CTX12,dialogo_respeitoso,"Quero conversar com você e resolver esse desacordo com respeito.",NAO
+CTX13,dialogo_com_insulto,"Fiquei triste com o que aconteceu, mas quero conversar e resolver. Você é inútil.",SIM
+CTX14,dialogo_com_ameaca,"Fiquei triste com o que aconteceu. Quero conversar e resolver. Se me deixar, eu acabo com a sua vida.",SIM
+CTX15,dialogo_com_controle,"Fiquei triste com o que aconteceu e quero conversar, mas você nunca pode falar com seus amigos.",SIM
+CTX16,relato_de_ofensa,"Me sinto triste porque você me chamou de inútil. Quero conversar e resolver.",SIM
