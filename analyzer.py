@@ -13,7 +13,7 @@ import torch
 from rag import buscar_referencias, gerar_justificativa_fundamentada
 from contexto import (
     ROTULOS_INTENCAO_CONTEXTO,
-    eh_contexto_de_resolucao,
+    eh_contexto_nao_abusivo,
     neutralizar_expressoes,
 )
 
@@ -39,17 +39,11 @@ NOME_CATEGORIAS_FORMATADO = {
     "invalidação": "Invalidação Emocional / Desprezo",
 }
 
-PALAVRAS_POSITIVAS = [
-    "adoro", "amo", "linda", "lindo", "bonita", "bonito", "maravilhosa",
-    "maravilhoso", "incrível", "feliz", "felicidade", "obrigada", "obrigado",
-    "parabéns", "orgulho", "carinho", "amor", "querida", "querido",
-    "saudade", "gratidão", "grato", "grata", "admiro", "especial",
-]
-
 # --- Parâmetros de decisão ---
 LIMIAR = 0.65         # nota mínima para uma categoria ser considerada (ajustado p/ WhatsApp)
 MARGEM_CATEGORIAS = 0.05  # só são listadas categorias até 5 pontos abaixo da maior nota
 MAX_CATEGORIAS = 3        # máximo de categorias listadas na resposta
+LIMIAR_CONTEXTO_AGRESSAO_ALTO = 0.50
 
 
 def carregar_modelos():
@@ -58,7 +52,15 @@ def carregar_modelos():
         nlp = spacy.load("pt_core_news_lg")
     except OSError:
         print("[Aviso] Modelo 'pt_core_news_lg' não encontrado. Usando 'pt_core_news_sm'.")
-        nlp = spacy.load("pt_core_news_sm")
+        try:
+            nlp = spacy.load("pt_core_news_sm")
+        except OSError:
+            print(
+                "[Aviso] Modelo 'pt_core_news_sm' não encontrado. "
+                "Usando tokenização e segmentação básicas em português."
+            )
+            nlp = spacy.blank("pt")
+            nlp.add_pipe("sentencizer")
 
     # Detecta automaticamente GPU se disponível
     dispositivo = 0 if torch.cuda.is_available() else -1
@@ -76,21 +78,6 @@ def carregar_modelos():
 
 
 _nlp, _classificador = carregar_modelos()
-
-
-def _texto_e_positivo(texto: str) -> bool:
-    """Valida se a mensagem tem viés predominantemente afetivo/neutro."""
-    texto_lower = texto.lower()
-    qtd_positivas = sum(1 for p in PALAVRAS_POSITIVAS if p in texto_lower)
-
-    palavras_agressivas = [
-        "matar", "bater", "inútil", "idiota", "burra", "puta",
-        "vagabundo", "odeio", "imbecil", "estúpida", "proibido",
-        "nunca", "culpa", "arrependida", "louca"
-    ]
-    qtd_agressivas = sum(1 for p in palavras_agressivas if p in texto_lower)
-
-    return qtd_positivas >= 2 and qtd_agressivas == 0
 
 
 def _tem_conteudo_apos_neutralizacao(texto: str, expressoes: list[str]) -> bool:
@@ -111,19 +98,6 @@ def analisar_texto(texto: str) -> dict:
     texto_original = texto
     texto, expressoes_neutralizadas = neutralizar_expressoes(texto_original)
 
-    if _texto_e_positivo(texto):
-        return {
-            "veredicto": "NAO",
-            "nivel_risco": "NENHUM",
-            "score_confianca": 0.0,
-            "tipos_identificados": [],
-            "trechos_relevantes": [],
-            "justificativa": "O texto apresenta contexto predominantemente positivo ou afetivo. Nenhum indicador de violência psicológica foi identificado.",
-            "recomendacao": "Nenhuma ação necessária com base nesta mensagem.",
-            "referencias": [],
-            "expressoes_neutralizadas": expressoes_neutralizadas,
-        }
-
     doc = _nlp(texto)
     sentencas = [sent.text.strip() for sent in doc.sents if sent.text.strip()]
     if not sentencas:
@@ -143,6 +117,7 @@ def analisar_texto(texto: str) -> dict:
 
     scores_por_categoria = {cat: 0.0 for cat in labels_chaves}  # maior nota de cada categoria
     scores_por_sentenca = []                                     # [(sentença, {categoria: nota})]
+    maior_score_agressao_contexto = 0.0
 
     for sentenca, sentenca_original in zip(sentencas, sentencas_originais):
         if expressoes_neutralizadas and not _tem_conteudo_apos_neutralizacao(
@@ -164,20 +139,29 @@ def analisar_texto(texto: str) -> dict:
             notas_sentenca[chave_cat] = score
 
         resultado_contexto = _classificador(
-            sentenca_original,
+            sentenca,
             candidate_labels=list(ROTULOS_INTENCAO_CONTEXTO),
-            hypothesis_template="O texto expressa: {}.",
+            hypothesis_template="A intenção principal desta mensagem é {}.",
             multi_label=False,
         )
-        score_dialogo = resultado_contexto["scores"][
-            resultado_contexto["labels"].index(ROTULOS_INTENCAO_CONTEXTO[0])
-        ]
-        if eh_contexto_de_resolucao(
+        scores_contexto = dict(zip(resultado_contexto["labels"], resultado_contexto["scores"]))
+        score_dialogo = scores_contexto[ROTULOS_INTENCAO_CONTEXTO[0]]
+        score_cotidiano = scores_contexto[ROTULOS_INTENCAO_CONTEXTO[1]]
+        score_agressao = scores_contexto[ROTULOS_INTENCAO_CONTEXTO[2]]
+        if eh_contexto_nao_abusivo(
             score_dialogo,
+            score_cotidiano,
+            score_agressao,
             sentenca,
         ):
             scores_por_sentenca.append((sentenca_original, {}))
             continue
+
+        if any(score >= LIMIAR for score in notas_sentenca.values()):
+            maior_score_agressao_contexto = max(
+                maior_score_agressao_contexto,
+                score_agressao,
+            )
 
         for chave_cat, score in notas_sentenca.items():
             if score > scores_por_categoria[chave_cat]:
@@ -216,14 +200,18 @@ def analisar_texto(texto: str) -> dict:
         if expressoes_neutralizadas:
             exemplos = ", ".join(f"'{e}'" for e in expressoes_neutralizadas)
             justificativa += f" Expressões figuradas ({exemplos}) foram tratadas como linguagem do dia a dia."
-    elif qtd == 1 and score_geral < 0.65:
+    elif qtd == 1 and score_geral < 0.75:
         veredicto = "POSSIVEL"
         nivel_risco = "BAIXO"
         justificativa = (
             f"Identificado um indicador pontual de {tipos_identificados[0]} "
             f"com nível de confiança de {score_exibido:.0%}."
         )
-    elif qtd <= 2 or score_geral < 0.70:
+    elif (
+        qtd <= 2
+        or score_geral < 0.70
+        or maior_score_agressao_contexto < LIMIAR_CONTEXTO_AGRESSAO_ALTO
+    ):
         veredicto = "POSSIVEL"
         nivel_risco = "MEDIO"
         if n == 1:
@@ -266,6 +254,7 @@ def analisar_texto(texto: str) -> dict:
         "veredicto": veredicto,
         "nivel_risco": nivel_risco,
         "score_confianca": round(score_exibido, 2),
+        "score_contexto_agressao": round(maior_score_agressao_contexto, 2),
         "tipos_identificados": tipos_identificados,
         "trechos_relevantes": trechos_relevantes,
         "justificativa": justificativa,

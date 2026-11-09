@@ -7,6 +7,7 @@ Avaliação binária do sistema:
 """
 
 import csv
+from collections import Counter
 
 from analyzer import analisar_texto
 
@@ -103,6 +104,7 @@ y_true.extend(item["rotulo"] for item in contextos)
 # =========================================================
 
 y_pred = []
+y_niveis_risco = []
 
 print("\n===================================================")
 print("AVALIAÇÃO BINÁRIA DO MODELO")
@@ -110,6 +112,7 @@ print("===================================================\n")
 
 for texto in textos:
     resultado = analisar_texto(texto)
+    y_niveis_risco.append(resultado["nivel_risco"])
 
     previsao = resultado["veredicto"]
 
@@ -182,6 +185,23 @@ print(classification_report(
     target_names=["NÃO", "SIM"],
     zero_division=0
 ))
+
+print("Distribuição do nível de risco no recorte contextual:")
+for rotulo in ("NAO", "SIM"):
+    indices = [
+        i for i in indices_contextuais
+        if y_true[i] == rotulo
+    ]
+    distribuicao = Counter(y_niveis_risco[i] for i in indices)
+    print(f"  {rotulo}: {dict(distribuicao)}")
+
+falsos_altos = [
+    textos[i] for i in indices_contextuais
+    if y_true[i] == "NAO" and y_niveis_risco[i] == "ALTO"
+]
+print(f"Falsos positivos de risco ALTO no recorte contextual: {len(falsos_altos)}")
+for texto in falsos_altos:
+    print(f"  - {texto}")
 
 
 # =========================================================

@@ -108,6 +108,21 @@ def main():
     print(f"Verdadeiros negativos: {tn} | Falsos positivos: {fp}")
     print(f"Falsos negativos:      {fn} | Verdadeiros positivos: {tp}")
 
+    for titulo, esperado_erro, previsto_erro in (
+        ("FALSOS POSITIVOS", 0, 1),
+        ("FALSOS NEGATIVOS", 1, 0),
+    ):
+        mensagens = [
+            texto for texto, esperado, previsto in erros
+            if esperado == esperado_erro and previsto == previsto_erro
+        ]
+        print(f"\n=== {titulo} ({len(mensagens)}) ===")
+        if mensagens:
+            for indice, texto in enumerate(mensagens, start=1):
+                print(f"{indice}. {texto}\n")
+        else:
+            print("Nenhum.")
+
     with open("erros_hatebr.csv", "w", encoding="utf-8-sig", newline="") as f:
         escritor = csv.writer(f)
         escritor.writerow(["texto", "esperado", "previsto", "tipo_erro"])

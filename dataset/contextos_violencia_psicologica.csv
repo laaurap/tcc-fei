@@ -15,3 +15,4 @@ CTX13,dialogo_com_insulto,"Fiquei triste com o que aconteceu, mas quero conversa
 CTX14,dialogo_com_ameaca,"Fiquei triste com o que aconteceu. Quero conversar e resolver. Se me deixar, eu acabo com a sua vida.",SIM
 CTX15,dialogo_com_controle,"Fiquei triste com o que aconteceu e quero conversar, mas você nunca pode falar com seus amigos.",SIM
 CTX16,relato_de_ofensa,"Me sinto triste porque você me chamou de inútil. Quero conversar e resolver.",SIM
+CTX17,dialogo_com_sentimento,"Estou magoada com aquilo e gostaria de conversar para resolvermos.",NAO

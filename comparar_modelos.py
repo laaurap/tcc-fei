@@ -126,7 +126,16 @@ def carregar_spacy():
     try:
         return spacy.load("pt_core_news_lg")
     except OSError:
-        return spacy.load("pt_core_news_sm")
+        try:
+            return spacy.load("pt_core_news_sm")
+        except OSError:
+            print(
+                "[Aviso] Modelos spaCy de português não encontrados. "
+                "Usando tokenização e segmentação básicas."
+            )
+            nlp = spacy.blank("pt")
+            nlp.add_pipe("sentencizer")
+            return nlp
 
 
 def arquivo_scores(alias, formulacao):
