@@ -127,7 +127,7 @@ trainer = Trainer(
     args=args,
     train_dataset=ds_treino,
     eval_dataset=ds_validacao,
-    processing_class=tokenizer,
+    tokenizer=tokenizer,  # transformers 4.42 (versão fixada no requirements)
     data_collator=DataCollatorWithPadding(tokenizer),
     compute_metrics=calcular_metricas
 )

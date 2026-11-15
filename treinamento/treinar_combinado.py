@@ -24,9 +24,19 @@ from transformers import (
     DataCollatorWithPadding,
 )
 
+import argparse
+
 MODELO = "distilbert/distilbert-base-multilingual-cased"
-SAIDA = "resultados_modelos/combinado_treinado"
 SUPERAMOSTRAGEM = 5
+
+_parser = argparse.ArgumentParser()
+_parser.add_argument("--epocas", type=int, default=3)
+_parser.add_argument("--max-len", type=int, default=256)
+_parser.add_argument("--batch", type=int, default=16)
+_parser.add_argument("--saida", default="resultados_modelos/combinado_v3")
+_args = _parser.parse_args()
+SAIDA = _args.saida
+MAX_LEN = _args.max_len
 
 FRASES_VERIFICACAO = [
     "Vou te perseguir até o fim do mundo se você não me mandar a foto desse cachorro agora",
@@ -58,6 +68,11 @@ def carregar_proprio():
     df = df[["texto", "rotulo"]].dropna()
     df["texto"] = df["texto"].astype(str).str.strip()
     df = df.drop_duplicates(subset="texto")
+    # Proteção contra vazamento: nada do teste congelado entra no treino
+    congelado = set(
+        pd.read_csv("dataset/teste_congelado.csv", encoding="utf-8-sig")["texto"].str.strip()
+    )
+    df = df[~df["texto"].isin(congelado)]
     df = df.rename(columns={"rotulo": "labels"})
     df["labels"] = df["labels"].astype(int)
     return df[["texto", "labels"]]
@@ -89,7 +104,7 @@ tokenizer = AutoTokenizer.from_pretrained(MODELO)
 def preparar(dados):
     ds = Dataset.from_pandas(dados.reset_index(drop=True), preserve_index=False)
     return ds.map(
-        lambda ex: tokenizer(ex["texto"], truncation=True, max_length=256),
+        lambda ex: tokenizer(ex["texto"], truncation=True, max_length=MAX_LEN),
         batched=True,
         remove_columns=["texto"],
     )
@@ -117,8 +132,8 @@ def calcular_metricas(resultado):
 
 args = TrainingArguments(
     output_dir=SAIDA + "/checkpoints",
-    num_train_epochs=3,
-    per_device_train_batch_size=8,
+    num_train_epochs=_args.epocas,
+    per_device_train_batch_size=_args.batch,
     per_device_eval_batch_size=16,
     learning_rate=2e-5,
     weight_decay=0.01,
@@ -133,12 +148,21 @@ args = TrainingArguments(
     seed=42,
 )
 
+import inspect
+
+# transformers antigo usa "tokenizer", o novo usa "processing_class"
+_NOME_TOK = (
+    "processing_class"
+    if "processing_class" in inspect.signature(Trainer.__init__).parameters
+    else "tokenizer"
+)
+
 trainer = Trainer(
     model=model,
     args=args,
     train_dataset=ds_treino,
     eval_dataset=ds_val,
-    tokenizer=tokenizer,
+    **{_NOME_TOK: tokenizer},
     data_collator=DataCollatorWithPadding(tokenizer),
     compute_metrics=calcular_metricas,
 )
@@ -157,7 +181,7 @@ tokenizer.save_pretrained(SAIDA)
 model.eval()
 print("\nVERIFICAÇÃO COM FRASES-CHAVE (prob. de ser violência/ofensa):")
 for frase in FRASES_VERIFICACAO:
-    entrada = tokenizer(frase, return_tensors="pt", truncation=True, max_length=256)
+    entrada = tokenizer(frase, return_tensors="pt", truncation=True, max_length=MAX_LEN)
     entrada = {k: v.to(model.device) for k, v in entrada.items()}
     with torch.no_grad():
         prob = torch.softmax(model(**entrada).logits, dim=-1)[0, 1].item()

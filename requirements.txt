@@ -10,6 +10,7 @@ spacy==3.7.5
 transformers==4.42.4
 torch==2.3.1
 sentencepiece==0.2.0
+datasets==2.20.0
 
 # --- RAG (busca por similaridade) ---
 sentence-transformers==3.0.1

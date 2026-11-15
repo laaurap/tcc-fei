@@ -13,9 +13,14 @@ Uso:
 import csv
 from collections import Counter
 
+import os
+import sys
+
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "src"))
+
 from analyzer import analisar_texto
 
-with open("erros_hatebr.csv", encoding="utf-8-sig", newline="") as f:
+with open("resultados_modelos/erros_hatebr.csv", encoding="utf-8-sig", newline="") as f:
     falsos_positivos = [l for l in csv.DictReader(f) if l["tipo_erro"] == "falso_positivo"]
 
 print(f"\n{len(falsos_positivos)} falsos positivos encontrados.\n")

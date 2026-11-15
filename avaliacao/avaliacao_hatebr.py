@@ -24,6 +24,11 @@ import sys
 
 from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
 
+import os
+import sys
+
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "src"))
+
 from analyzer import analisar_texto
 
 COLUNAS_TEXTO = ["instagram_comments", "comentario", "comentário", "comment", "texto", "text"]
@@ -123,13 +128,13 @@ def main():
         else:
             print("Nenhum.")
 
-    with open("erros_hatebr.csv", "w", encoding="utf-8-sig", newline="") as f:
+    with open("resultados_modelos/erros_hatebr.csv", "w", encoding="utf-8-sig", newline="") as f:
         escritor = csv.writer(f)
         escritor.writerow(["texto", "esperado", "previsto", "tipo_erro"])
         for texto, esperado, previsto in erros:
             tipo = "falso_positivo" if previsto == 1 else "falso_negativo"
             escritor.writerow([texto, esperado, previsto, tipo])
-    print(f"\n{len(erros)} erros salvos em erros_hatebr.csv (use pra analisar os casos).")
+    print(f"\n{len(erros)} erros salvos em resultados_modelos/erros_hatebr.csv (use pra analisar os casos).")
 
 
 if __name__ == "__main__":

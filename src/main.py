@@ -4,13 +4,13 @@ Ponto de entrada do sistema de detecção de violência psicológica.
 
 Como usar:
   # Analisar texto digitado:
-  python main.py --texto "Você nunca faz nada certo, é inútil mesmo."
+  python src/main.py --texto "Você nunca faz nada certo, é inútil mesmo."
 
   # Analisar arquivo de áudio:
-  python main.py --audio conversa.wav
+  python src/main.py --audio conversa.wav
 
   # Modo interativo (digita na hora):
-  python main.py
+  python src/main.py
 """
 
 import argparse

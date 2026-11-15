@@ -1,13 +1,15 @@
 """
 analyzer.py
 Analisa texto em busca de violência psicológica usando
-spaCy (pré-processamento) + HuggingFace XLM-RoBERTa / BERT (classificação Zero-Shot) + RAG.
+spaCy (pré-processamento) + HuggingFace XLM-RoBERTa (Zero-Shot por categoria)
++ DistilBERT fine-tuned (HateBR + dataset próprio) + RAG.
 """
 
+import os
 import re
 
 import spacy
-from transformers import pipeline
+from transformers import AutoModelForSequenceClassification, AutoTokenizer, pipeline
 import torch
 
 from rag import buscar_referencias, gerar_justificativa_fundamentada
@@ -15,6 +17,7 @@ from contexto import (
     ROTULOS_INTENCAO_CONTEXTO,
     eh_contexto_nao_abusivo,
     neutralizar_expressoes,
+    tem_abuso_explicito,
 )
 
 # Categorias de violência psicológica e descrições para o modelo zero-shot
@@ -45,9 +48,19 @@ MARGEM_CATEGORIAS = 0.05  # só são listadas categorias até 5 pontos abaixo da
 MAX_CATEGORIAS = 3        # máximo de categorias listadas na resposta
 LIMIAR_CONTEXTO_AGRESSAO_ALTO = 0.50
 
+# --- Parâmetros do modelo supervisionado (fine-tuning HateBR + dataset próprio) ---
+_RAIZ_PROJETO = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+_CANDIDATOS_SUPERVISIONADO = (
+    os.path.join(_RAIZ_PROJETO, "resultados_modelos", "combinado_v3"),
+    os.path.join(_RAIZ_PROJETO, "resultados_modelos", "combinado_treinado"),
+    os.path.join(_RAIZ_PROJETO, "resultados_modelos", "hatebr_treinado"),
+)
+LIMIAR_SUP_INOFENSIVO = 0.25   # abaixo disso, o modelo fine-tuned considera a frase benigna/hipérbole
+LIMIAR_SUP_ALERTA = 0.60       # acima disso, o modelo fine-tuned confirma indício de violência
+
 
 def carregar_modelos():
-    """Carrega o spaCy e o pipeline de classificação HuggingFace."""
+    """Carrega o spaCy, o pipeline Zero-Shot e o classificador supervisionado (fine-tuned)."""
     try:
         nlp = spacy.load("pt_core_news_lg")
     except OSError:
@@ -66,18 +79,44 @@ def carregar_modelos():
     dispositivo = 0 if torch.cuda.is_available() else -1
     str_dev = "GPU (CUDA)" if dispositivo == 0 else "CPU"
 
-    print(f"[Modelo] Carregando BERT em {str_dev}...")
+    print(f"[Modelo] Carregando BERT Zero-Shot em {str_dev}...")
     classificador = pipeline(
         "zero-shot-classification",
         model="joeddav/xlm-roberta-large-xnli",
         device=dispositivo
     )
-    print("[Modelo] Modelo BERT e spaCy carregados com sucesso!")
 
-    return nlp, classificador
+    tok_sup, mod_sup = None, None
+    for caminho in _CANDIDATOS_SUPERVISIONADO:
+        if os.path.isdir(caminho) and os.path.exists(os.path.join(caminho, "config.json")):
+            try:
+                tok_sup = AutoTokenizer.from_pretrained(caminho)
+                mod_sup = AutoModelForSequenceClassification.from_pretrained(caminho)
+                if dispositivo == 0:
+                    mod_sup = mod_sup.to("cuda")
+                mod_sup.eval()
+                print(f"[Modelo] Modelo supervisionado (fine-tuned) carregado de: {os.path.basename(caminho)}")
+                break
+            except Exception as e:
+                print(f"[Aviso] Falha ao carregar modelo supervisionado em {caminho}: {e}")
+
+    print("[Modelo] Modelos carregados com sucesso!")
+
+    return nlp, classificador, tok_sup, mod_sup
 
 
-_nlp, _classificador = carregar_modelos()
+_nlp, _classificador, _tok_sup, _mod_sup = carregar_modelos()
+
+
+def _pontuar_supervisionado(texto: str) -> float | None:
+    """Retorna a probabilidade de violência/ofensa segundo o modelo fine-tuned (0.0 a 1.0)."""
+    if _tok_sup is None or _mod_sup is None:
+        return None
+    entrada = _tok_sup(texto, return_tensors="pt", truncation=True, max_length=256)
+    entrada.pop("token_type_ids", None)
+    entrada = {k: v.to(_mod_sup.device) for k, v in entrada.items()}
+    with torch.no_grad():
+        return torch.softmax(_mod_sup(**entrada).logits, dim=-1)[0, 1].item()
 
 
 def _tem_conteudo_apos_neutralizacao(texto: str, expressoes: list[str]) -> bool:
@@ -118,6 +157,8 @@ def analisar_texto(texto: str) -> dict:
     scores_por_categoria = {cat: 0.0 for cat in labels_chaves}  # maior nota de cada categoria
     scores_por_sentenca = []                                     # [(sentença, {categoria: nota})]
     maior_score_agressao_contexto = 0.0
+    maior_score_supervisionado = 0.0
+    neutralizadas_supervisionado = False
 
     for sentenca, sentenca_original in zip(sentencas, sentencas_originais):
         if expressoes_neutralizadas and not _tem_conteudo_apos_neutralizacao(
@@ -157,13 +198,33 @@ def analisar_texto(texto: str) -> dict:
             scores_por_sentenca.append((sentenca_original, {}))
             continue
 
-        if any(score >= LIMIAR for score in notas_sentenca.values()):
+        # --- Validação pelo modelo supervisionado (fine-tuned) ---
+        score_sup = _pontuar_supervisionado(sentenca)
+        if score_sup is not None:
+            maior_score_supervisionado = max(maior_score_supervisionado, score_sup)
+            # Se não há abuso explícito por regra e o modelo fine-tuned dá nota muito baixa
+            # (< 0.25), trata como hipérbole/cotidiano não abusivo.
+            if not tem_abuso_explicito(sentenca) and score_sup < LIMIAR_SUP_INOFENSIVO:
+                neutralizadas_supervisionado = True
+                scores_por_sentenca.append((sentenca_original, {}))
+                continue
+
+        limiar_efetivo = (
+            0.55 if (score_sup is not None and score_sup >= 0.85) else LIMIAR
+        )
+        if any(score >= limiar_efetivo for score in notas_sentenca.values()):
             maior_score_agressao_contexto = max(
                 maior_score_agressao_contexto,
                 score_agressao,
             )
 
         for chave_cat, score in notas_sentenca.items():
+            # Se o supervisionado tem alta confiança (>= 0.85) e a melhor categoria
+            # zero-shot ficou entre 0.55 e 0.65, eleva ao limiar para não perder o alerta.
+            if score_sup is not None and score_sup >= 0.85 and score >= 0.55 and score < LIMIAR:
+                if score == max(notas_sentenca.values()):
+                    score = LIMIAR
+                    notas_sentenca[chave_cat] = score
             if score > scores_por_categoria[chave_cat]:
                 scores_por_categoria[chave_cat] = score
         scores_por_sentenca.append((sentenca_original, notas_sentenca))
@@ -200,7 +261,15 @@ def analisar_texto(texto: str) -> dict:
         if expressoes_neutralizadas:
             exemplos = ", ".join(f"'{e}'" for e in expressoes_neutralizadas)
             justificativa += f" Expressões figuradas ({exemplos}) foram tratadas como linguagem do dia a dia."
-    elif qtd == 1 and score_geral < 0.75:
+        elif neutralizadas_supervisionado:
+            justificativa += " O classificador supervisionado identificou o contexto como hipérbole ou conversa cotidiana não abusiva."
+    elif (
+        qtd == 1
+        and (
+            score_geral < 0.75
+            or (_mod_sup is not None and maior_score_supervisionado < LIMIAR_SUP_ALERTA and not tem_abuso_explicito(texto))
+        )
+    ):
         veredicto = "POSSIVEL"
         nivel_risco = "BAIXO"
         justificativa = (
@@ -211,6 +280,7 @@ def analisar_texto(texto: str) -> dict:
         qtd <= 2
         or score_geral < 0.70
         or maior_score_agressao_contexto < LIMIAR_CONTEXTO_AGRESSAO_ALTO
+        or (_mod_sup is not None and maior_score_supervisionado < LIMIAR_SUP_ALERTA and not tem_abuso_explicito(texto))
     ):
         veredicto = "POSSIVEL"
         nivel_risco = "MEDIO"
@@ -255,6 +325,7 @@ def analisar_texto(texto: str) -> dict:
         "nivel_risco": nivel_risco,
         "score_confianca": round(score_exibido, 2),
         "score_contexto_agressao": round(maior_score_agressao_contexto, 2),
+        "score_supervisionado": round(maior_score_supervisionado, 2),
         "tipos_identificados": tipos_identificados,
         "trechos_relevantes": trechos_relevantes,
         "justificativa": justificativa,

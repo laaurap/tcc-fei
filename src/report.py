@@ -60,7 +60,7 @@ def exibir_resultado(resultado: dict, texto_analisado: str = "", origem: str = "
     ))
 
     # Tipos detectados
-    tipos = resultado.get("tipos_detectados", [])
+    tipos = resultado.get("tipos_identificados") or resultado.get("tipos_detectados", [])
     if tipos:
         console.print("\n[bold]Tipos de violência identificados:[/bold]")
         for t in tipos:

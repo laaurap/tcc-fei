@@ -95,7 +95,7 @@ PROPRIO_SIM = [
 # ---------------------------------------------------------------------------
 # Dados
 # ---------------------------------------------------------------------------
-def carregar_categorias(caminho="analyzer.py"):
+def carregar_categorias(caminho="src/analyzer.py"):
     """Lê o dicionário CATEGORIAS do analyzer.py sem executar o arquivo."""
     with open(caminho, encoding="utf-8") as f:
         arvore = ast.parse(f.read())
@@ -325,7 +325,7 @@ def analisar(categorias, aliases, formulacoes):
     print("FP próp. = % das 15 frases NÃO marcadas (baixo). Rec próp. = % das 20 frases SIM detectadas (alto).")
     print("As frases próprias foram escritas pela autora: tendem a ser otimistas.")
 
-    with open("comparacao_modelos.csv", "w", encoding="utf-8-sig", newline="") as f:
+    with open("resultados_modelos/comparacao_modelos.csv", "w", encoding="utf-8-sig", newline="") as f:
         w = csv.writer(f)
         w.writerow(["modelo", "formulacao", "score", "auc_hatebr", "ic_lo_hatebr", "ic_hi_hatebr",
                     "auc_proprio", "ic_lo_proprio", "ic_hi_proprio", "limiar", "fp_hatebr",
@@ -336,7 +336,7 @@ def analisar(categorias, aliases, formulacoes):
                         f"{r['auc_proprio']:.4f}", f"{r['ic_proprio'][0]:.4f}", f"{r['ic_proprio'][1]:.4f}",
                         f"{r['limiar']:.4f}", f"{r['fp_hatebr']:.4f}", f"{r['rec_hatebr']:.4f}",
                         f"{r['fp_proprio']:.4f}", f"{r['rec_proprio']:.4f}", f"{r['tempo']:.2f}"])
-    print("\nTabela salva em comparacao_modelos.csv")
+    print("\nTabela salva em resultados_modelos/comparacao_modelos.csv")
 
     try:
         import matplotlib

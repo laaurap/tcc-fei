@@ -88,6 +88,16 @@ _REGRAS = [
 ]
 
 
+def tem_abuso_explicito(texto: str) -> bool:
+    """Retorna True se o texto contém um padrão inequívoco de abuso explícito."""
+    texto_normalizado = unicodedata.normalize("NFKD", texto)
+    texto_normalizado = "".join(
+        caractere for caractere in texto_normalizado
+        if not unicodedata.combining(caractere)
+    ).lower()
+    return bool(_PADRAO_ABUSO_EXPLICITO.search(texto_normalizado))
+
+
 def eh_contexto_nao_abusivo(
     score_dialogo: float,
     score_cotidiano: float,

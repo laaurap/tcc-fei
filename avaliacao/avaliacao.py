@@ -9,6 +9,11 @@ Avaliação binária do sistema:
 import csv
 from collections import Counter
 
+import os
+import sys
+
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "src"))
+
 from analyzer import analisar_texto
 
 from sklearn.metrics import (

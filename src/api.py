@@ -5,7 +5,7 @@ para que o n8n (e qualquer outro sistema) possa chamá-lo via requisição POST.
 
 Como rodar:
     pip install -r requirements_api.txt
-    uvicorn api:app --host 0.0.0.0 --port 8000 --reload
+    uvicorn api:app --app-dir src --host 0.0.0.0 --port 8000 --reload
 
 Endpoints principais:
     GET  /          - Checagem de status (Health check)

@@ -1,0 +1,70 @@
+﻿texto,rotulo,categoria,prob,previsto,acertou
+Se você terminar comigo eu vou atrás de você em qualquer lugar que for.,1,ameaça,0.9791643619537354,1,True
+"Pode me bloquear, eu dou um jeito de te encontrar.",1,ameaça,0.8411104083061218,1,True
+"Não adianta se esconder, eu vou te achar e você vai ver.",1,ameaça,0.9843320846557617,1,True
+Mais uma mentira dessas e você não sai inteira daqui.,1,ameaça,0.9877183437347412,1,True
+Vou ficar na frente da sua casa todo dia até você voltar.,1,ameaça,0.03295505419373512,0,False
+"Se você me trocar, vai pagar por isso, pode ter certeza.",1,ameaça,0.9773138165473938,1,True
+"Eu sei o seu horário, vou te esperar na saída do trabalho.",1,ameaça,0.02716095745563507,0,False
+"Se contar pra polícia, a sua família vai sofrer.",1,ameaça,0.9384868144989014,1,True
+Antes de sair de casa você precisa me pedir autorização.,1,controle,0.8090792894363403,1,True
+"Deleta o Instagram, não quero você falando com ninguém.",1,controle,0.601876437664032,1,True
+Você vai me mandar foto de onde está de hora em hora.,1,controle,0.9030615091323853,1,True
+"Não vou deixar você usar essa saia, troca de roupa agora.",1,controle,0.9876004457473755,1,True
+"Fica sem celular, eu guardo pra você não conversar com seus amigos.",1,controle,0.9238998889923096,1,True
+"A partir de hoje eu cuido do seu dinheiro, você não mexe mais.",1,controle,0.9808454513549805,1,True
+"Isso não aconteceu desse jeito, você está distorcendo tudo de novo.",1,gaslighting,0.9866511821746826,1,True
+"Você está ficando paranoica, ninguém falou nada disso.",1,gaslighting,0.9870620369911194,1,True
+"Eu jamais disse isso, você inventou só pra brigar comigo.",1,gaslighting,0.9830024838447571,1,True
+"Sua memória é péssima, tudo que você conta é mentira.",1,gaslighting,0.9867076873779297,1,True
+"Você é uma completa imprestável, só serve pra dar trabalho.",1,xingamento,0.9864583611488342,1,True
+"Cala a boca, seu inútil, ninguém pediu a sua opinião.",1,xingamento,0.9759320020675659,1,True
+"Que mulher burra, não consegue entender uma coisa simples.",1,xingamento,0.9796221256256104,1,True
+"Você é uma vergonha, ninguém quer ser visto do seu lado.",1,humilhação,0.9875988364219666,1,True
+"Você não tem capacidade de decidir nada, deixa que eu resolvo tudo.",1,humilhação,0.97444087266922,1,True
+"Sem mim você não é ninguém, nunca esqueça disso.",1,humilhação,0.9816479682922363,1,True
+Eu tenho vergonha de dizer que sou casado com você.,1,humilhação,0.9840824604034424,1,True
+"Se você for na viagem com as amigas, eu vou me machucar e você vai ser a culpada.",1,chantagem_emocional,0.9867361187934875,1,True
+"Depois de tudo que eu passei por você, você me larga assim?",1,chantagem_emocional,0.9810224175453186,1,True
+"Se me deixar eu não respondo por mim, e vai ser tudo culpa sua.",1,chantagem_emocional,0.9526840448379517,1,True
+"Ninguém vai te amar como eu, volta ou vai ficar sozinha pra sempre.",1,chantagem_emocional,0.858849823474884,1,True
+"Pare de chorar por besteira, ninguém aguenta esse seu drama.",1,invalidação,0.9408084750175476,1,True
+"Você exagera em tudo, isso nem é motivo pra ficar triste.",1,invalidação,0.9767334461212158,1,True
+"Nossa, de novo se fazendo de vítima? Cresce.",1,invalidação,0.0393102765083313,0,False
+Esse seu sofrimento é puro show pra chamar atenção.,1,invalidação,0.9387636780738831,1,True
+"Vou te seguir até a padaria pra ganhar um pedaço do seu pão, kkk.",0,hiperbole,0.5578905344009399,1,False
+Se não me mandar a foto do show agora eu fico te cobrando até domingo!,0,hiperbole,0.00931725837290287,0,True
+"Juro que se você contar o final da série eu nunca mais te perdoo, brincadeira.",0,hiperbole,0.3162744641304016,0,True
+Vou te sequestrar pra ir comigo na praia no feriado.,0,hiperbole,0.027122020721435547,0,True
+Se você não vier no meu aniversário eu vou na sua casa te buscar de pijama.,0,hiperbole,0.9434304237365723,1,False
+"Esse chocolate tá me matando, eu não consigo parar de comer!",0,hiperbole,0.03196476399898529,0,True
+"Vou te encher de beijo quando eu te ver, prepara.",0,hiperbole,0.66701740026474,1,False
+Manda a foto da sua nova cachorrinha ou eu vou aí buscar ela!,0,hiperbole,0.013388236984610558,0,True
+Morri de rir com o vídeo que você mandou.,0,idiomatica,0.9530907273292542,1,False
+"Esse sol de meio-dia vai me matar, preciso de água.",0,idiomatica,0.8568427562713623,1,False
+"Tô morrendo de sono, vou deitar cedo hoje.",0,idiomatica,0.012554340064525604,0,True
+Essa prova me deixou morta de nervoso.,0,idiomatica,0.02218298614025116,0,True
+"A personagem do livro é perseguida pelo ex, a autora retrata bem o medo dela.",0,ficcao,0.3156338334083557,0,True
+"Assisti a um documentário sobre relacionamentos abusivos, super esclarecedor.",0,ficcao,0.08627786487340927,0,True
+"Na peça, o ator grita 'eu vou te destruir', foi muito intenso.",0,ficcao,0.10955184698104858,0,True
+Li uma matéria dizendo que o controle do celular do parceiro é um sinal de abuso.,0,ficcao,0.9005310535430908,1,False
+"Fiquei chateada quando você esqueceu da data, podemos conversar sobre isso?",0,dialogo,0.3859426975250244,0,True
+"Desculpa ter gritado, eu perdi a paciência e não devia.",0,dialogo,0.8986481428146362,1,False
+"Acho que estou precisando de um tempo sozinho, mas não quero te magoar.",0,dialogo,0.014949134550988674,0,True
+"Eu me senti pouco ouvido na conversa de ontem, queria te explicar.",0,dialogo,0.01155331265181303,0,True
+"Não concordo com a sua decisão, mas a escolha é sua e eu respeito.",0,dialogo,0.010482550598680973,0,True
+"Estou com ciúme, mas sei que é um problema meu, vou trabalhar nisso.",0,dialogo,0.023742256686091423,0,True
+"Chego em casa por volta das sete, quer que eu leve alguma coisa?",0,cotidiano,0.012911645695567131,0,True
+Você pode me ajudar com o trabalho de história amanhã?,0,cotidiano,0.012947289273142815,0,True
+Reservei a mesa do restaurante para as oito horas.,0,cotidiano,0.26277244091033936,0,True
+"Avisa quando chegar, fica tranquila e dirige com cuidado.",0,cotidiano,0.8117086291313171,1,False
+"A feira de ciências foi ótima, meu grupo ficou em segundo lugar.",0,cotidiano,0.05195944383740425,0,True
+Posso te ligar depois do almoço?,0,cotidiano,0.012719331309199333,0,True
+"Obrigada pela ajuda de hoje, você salvou o meu dia.",0,cotidiano,0.8677976727485657,1,False
+"O ônibus atrasou, vou chegar uns dez minutos depois.",0,cotidiano,0.12695086002349854,0,True
+Vamos assistir aquele filme que você indicou no sábado?,0,cotidiano,0.01164753083139658,0,True
+"Hoje vou ficar estudando, depois te conto como foi.",0,cotidiano,0.01116319838911295,0,True
+"Não vou poder sair hoje, estou muito cansada, fica pra amanhã.",0,limite,0.05208241567015648,0,True
+"Prefiro que você não fale assim comigo, isso me incomoda.",0,limite,0.980129063129425,1,False
+"Esse trabalho precisa de ajustes, vou te apontar o que melhorar.",0,limite,0.01944575272500515,0,True
+"Discordo do seu plano, acho que vai custar caro demais.",0,limite,0.5590251684188843,1,False
