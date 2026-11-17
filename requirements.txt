@@ -6,6 +6,9 @@ rich==13.9.4
 # --- Análise de texto (spaCy + BERT) ---
 # spaCy 3.7.5 / Thinc 8.2.5 are not compatible with NumPy 2.x binaries.
 numpy<2
+pandas<3
+# Keep the Arrow binary compatible with the NumPy 1.x requirement above.
+pyarrow<20
 spacy==3.7.5
 transformers==4.42.4
 torch==2.3.1

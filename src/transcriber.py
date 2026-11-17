@@ -3,7 +3,20 @@ transcriber.py
 Transcreve arquivos de áudio para texto usando o Faster Whisper.
 """
 
+import av
 from faster_whisper import WhisperModel
+
+# Compatibilidade: PyAV >= 14 removeu o argumento 'metadata_errors' de av.open(),
+# que ainda é passado pelo faster-whisper 1.1.1.
+_av_open_original = av.open
+
+
+def _av_open_compativel(*args, **kwargs):
+    kwargs.pop("metadata_errors", None)
+    return _av_open_original(*args, **kwargs)
+
+
+av.open = _av_open_compativel
 
 
 def transcrever_audio(caminho_audio: str, modelo: str = "small", dispositivo: str = "cpu") -> str:

@@ -73,9 +73,10 @@ tcc-fei/
 
 Execute todos os comandos abaixo no **PowerShell**, sempre a partir da **pasta raiz do projeto (`tcc-fei`)**.
 
-### 1. Ativar o ambiente virtual
+### 1. Ativar o ambiente virtual e instalar as dependências
 ```powershell
 .\.venv\Scripts\Activate.ps1
+python -m pip install -r requirements.txt
 ```
 
 ---
