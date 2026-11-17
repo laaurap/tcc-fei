@@ -34,12 +34,24 @@ LIMIAR_AGRESSAO_PARA_FILTRO = 0.20
 LIMIAR_CONTEXTO_BENIGNO = 0.60
 MARGEM_CONTEXTO_NAO_ABUSIVO = 0.25
 
+_PADRAO_HIPERBOLE_AUTO = re.compile(
+    r"\b(?:louca|louco|maluca|maluco|apaixonada|apaixonado)\s+por\s+(?:voce|vc|ti|ele|ela|isso|esse|essa)\b|"
+    r"\b(?:quero|vou|vontade\s+de)\s+me\s+(?:matar|jogar|enterrar)\b[^.!?]{0,60}"
+    r"\b(?:trabalh\w*|estud\w*|cansad\w*|sono|fome|calor|frio|tanta\s+coisa|tanto\s+boleto|vergonha|prova|reuniao|transito)\b|"
+    r"\b(?:vou\s+surtar|surtando|sumir\s+do\s+mapa)\b[^.!?]{0,60}"
+    r"\b(?:internet|wifi|sistema|computador|onibus|transito|calor|chuva|fila|trabalho|prova|faculdade)\b"
+)
+
 _PADRAO_ABUSO_EXPLICITO = re.compile(
     r"\b(?:"
     r"inutil|idiota|burra|burro|puta|vagabundo|vagabunda|imbecil|"
-    r"estupida|estupido|louca|louco"
+    r"estupida|estupido"
     r")\b|"
-    r"\b(?:matar|mato|matou|machucar|machuco|bater|espancar)\b|"
+    r"\b(?:voce|vc|tu)\s+(?:e|ta|esta|ficou)\s+(?:uma?\s+)?(?:louca|louco|maluca|maluco)\b|"
+    r"\bsua\s+(?:louca|maluca|desgracada)\b|"
+    r"\b(?:te|lhe|voce|vc)\s+(?:matar|mato|machucar|machuco|bater|espancar|arrebentar|quebrar)\b|"
+    r"\b(?:matar|mato|machucar|machuco|bater|espancar|arrebentar)\s+(?:voce|vc|ela|ele)\b|"
+    r"\bse\s+(?:voce|vc)\s+(?:me\s+)?(?:deixar|largar|terminar|for\s+embora)[^.!?]{0,40}\b(?:me\s+mato|vou\s+me\s+matar|acabo\s+com)\b|"
     r"\bacabar\s+com\s+(?:a\s+)?(?:sua\s+vida|voce)\b|"
     r"\b(?:proibido|proibir|controlar|controlo|controla)\b|"
     r"\bsem\s+minha\s+permissao\b|"
@@ -50,6 +62,20 @@ _PADRAO_ABUSO_EXPLICITO = re.compile(
     r"\b(?:sempre|nunca)\s+entende\s+tudo\s+errado\b|"
     r"\b(?:talvez\s+)?o\s+problema\s+(?:seja|e)\s+voce\b|"
     r"\bnao\s+tem\s+direito\s+de\s+decidir\b"
+)
+
+# Padrão estrito de ameaça de dano físico / perseguição / chantagem suicida contra o parceiro
+# Usado pelo analyzer.py para reservar o nível de risco ALTO apenas a situações de perigo físico/grave.
+_PADRAO_RISCO_DANO_FISICO = re.compile(
+    r"\b(?:te|lhe|voce|vc)\s+(?:matar|mato|machucar|machuco|bater|espancar|arrebentar|quebrar|esfolar|enforcar)\b|"
+    r"\b(?:matar|mato|machucar|machuco|bater|espancar|arrebentar|quebrar)\s+(?:voce|vc|sua\s+cara|toda|todo)\b|"
+    r"\b(?:levar|tomar)\s+uma\s+surra\b|"
+    r"\bacabar\s+com\s+(?:a\s+)?(?:sua\s+vida|voce)\b|"
+    r"\bdestruir\s+(?:a\s+)?sua\s+vida\b|"
+    r"\b(?:sei\s+onde\s+voce\s+(?:mora|trabalha|estuda)|te\s+esperar\s+na\s+saida|te\s+pego\s+na\s+saida|apareco\s+na\s+sua\s+porta)\b|"
+    r"\b(?:nao\s+sai\s+inteir[oa]|perder\s+a\s+cabeca\s+com\s+voce|fazer\s+voce\s+se\s+arrepender\s+de\s+ter\s+nascido)\b|"
+    r"\b(?:te\s+perseguir|te\s+persigo|vou\s+atras\s+de\s+voce|te\s+encontrar\s+onde)[^.!?]{0,50}\b(?:deixar|largar|terminar|fugir|bloquear|trocar)\b|"
+    r"\bse\s+(?:voce|vc)\s+(?:me\s+)?(?:deixar|largar|terminar|for\s+embora)[^.!?]{0,50}\b(?:me\s+mato|vou\s+me\s+matar|me\s+machucar|desisto\s+de\s+viver|faco\s+uma\s+besteira|te\s+perseguir|te\s+persigo|acabo\s+com|te\s+mato)\b"
 )
 _PADRAO_INTENCAO_RESOLUCAO = re.compile(
     r"\b(?:quero|queria|gostaria|preciso|podemos|vamos)\b"
@@ -85,17 +111,72 @@ _REGRAS = [
     # "morrendo de fome", "morta de cansaço", "morri de vergonha"
     (re.compile(rf"(?<!\w){_MORRER}\s+de\s+{_ESTADOS}(?!\w)", re.IGNORECASE),
      lambda m: f"com bastante {m.group('estado').lower()}"),
+    # "quero me matar depois de trabalhar tanto", "vontade de me matar de tanto estudar"
+    (
+        re.compile(
+            r"\b(?:quero|vou|dá\s+vontade\s+de|da\s+vontade\s+de|vontade\s+de)\s+me\s+matar\s+"
+            r"(?:depois\s+de\s+|de\s+tanto\s+|de\s+tanta\s+|por\s+|com\s+esse\s+|com\s+essa\s+|nesse\s+|nessa\s+)"
+            r"(?:trabalh\w*|estud\w*|cansac\w*|cansaç\w*|calor|frio|transito|trânsito|fome|sono|prova|reuni\w*|rotina|semana|dia)",
+            re.IGNORECASE,
+        ),
+        "estou muito exausto com a rotina",
+    ),
+    # "completamente louca por você", "não sei o que faria sem você na minha vida"
+    (
+        re.compile(
+            r"\b(?:eu\s+)?(?:sou\s+|estou\s+|to\s+|tô\s+)?(?:completamente\s+|totalmente\s+|muito\s+|tão\s+|tao\s+)?"
+            r"(?:louca|louco|maluca|maluco|apaixonada|apaixonado)\s+por\s+(?:você|voce|vc|ti)\b"
+            r"(?:\s*,?\s*n[aã]o\s+sei\s+o\s+que\s+(?:eu\s+)?faria\s+sem\s+(?:você|voce|vc)(?:\s+na\s+minha\s+vida)?)?",
+            re.IGNORECASE,
+        ),
+        "gosto muito de você",
+    ),
+    # "vou surtar e sumir do mapa se essa internet...", "vou surtar com esse computador"
+    (
+        re.compile(
+            r"\b(?:eu\s+)?vou\s+surtar(?:\s+e\s+sumir\s+do\s+mapa)?\s+"
+            r"(?:se\s+ess[ea]\s+|com\s+ess[ea]\s+|por\s+causa\s+dess[ea]\s+)"
+            r"(?:internet|wi-?fi|computador|pc|celular|sistema|trânsito|transito|calor|chuva|fila|impressora|rede)",
+            re.IGNORECASE,
+        ),
+        "estou frustrado com esse problema técnico",
+    ),
 ]
+
+
+def _normalizar(texto: str) -> str:
+    texto_normalizado = unicodedata.normalize("NFKD", texto)
+    return "".join(
+        caractere for caractere in texto_normalizado
+        if not unicodedata.combining(caractere)
+    ).lower()
 
 
 def tem_abuso_explicito(texto: str) -> bool:
     """Retorna True se o texto contém um padrão inequívoco de abuso explícito."""
-    texto_normalizado = unicodedata.normalize("NFKD", texto)
-    texto_normalizado = "".join(
-        caractere for caractere in texto_normalizado
-        if not unicodedata.combining(caractere)
-    ).lower()
-    return bool(_PADRAO_ABUSO_EXPLICITO.search(texto_normalizado))
+    norm = _normalizar(texto)
+    if _PADRAO_HIPERBOLE_AUTO.search(norm) and not _PADRAO_RISCO_DANO_FISICO.search(norm):
+        return False
+    return bool(_PADRAO_ABUSO_EXPLICITO.search(norm))
+
+
+def tem_risco_dano_fisico(texto: str, notas_sentenca: dict[str, float] | None = None, score_sup: float | None = None) -> bool:
+    """
+    Define se a mensagem representa risco ALTO (possível evolução para dano físico,
+    ameaça direta, perseguição ou chantagem de autoextermínio contra o parceiro).
+    Violências puramente verbais/manipulativas sem ameaça de dano físico ficam em MEDIO/BAIXO.
+    """
+    norm = _normalizar(texto)
+    if _PADRAO_HIPERBOLE_AUTO.search(norm):
+        return False
+    if _PADRAO_RISCO_DANO_FISICO.search(norm):
+        return True
+    # Também aceita como ALTO quando a categoria 'ameaça' do zero-shot é altíssima (>= 0.85)
+    # E o modelo supervisionado confirma fortemente (>= 0.85).
+    if notas_sentenca and score_sup is not None:
+        if notas_sentenca.get("ameaça", 0.0) >= 0.85 and score_sup >= 0.85:
+            return True
+    return False
 
 
 def eh_contexto_nao_abusivo(
@@ -110,7 +191,7 @@ def eh_contexto_nao_abusivo(
         caractere for caractere in texto_normalizado
         if not unicodedata.combining(caractere)
     ).lower()
-    tem_indicador_explicito = bool(_PADRAO_ABUSO_EXPLICITO.search(texto_normalizado))
+    tem_indicador_explicito = tem_abuso_explicito(texto)
     quer_resolver_dialogando = bool(_PADRAO_INTENCAO_RESOLUCAO.search(texto_normalizado))
     if tem_indicador_explicito:
         return False

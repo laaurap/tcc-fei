@@ -1,291 +1,326 @@
 ﻿texto,rotulo,categoria
-Se você perder o jogo hoje eu vou te zoar até o fim do ano.,0,hiperbole_cotidiana
-"Vou ficar no seu pé até você me contar como foi o encontro, anda logo!",0,hiperbole_cotidiana
-Você está confundindo as coisas porque é desequilibrada.,1,gaslighting
-Morri de vergonha na apresentação.,0,expressao_idiomatica
-"Cuidado na estrada, me avisa quando chegar.",0,cotidiano_neutro
-"Não achei engraçado, prefiro que não faça esse tipo de piada.",0,critica_ou_discordancia_saudavel
-"Estou magoado com o que aconteceu, mas quero resolver juntos.",0,desculpas_e_dialogo
-"Se você for na festa, eu te pego na saída.",1,ameaça
-"Eu gostaria de decidir isso com mais tempo, pode ser?",0,limite_saudavel
-"Vou tirar o seu cartão, você gasta demais, eu cuido de tudo.",1,controle
-"Eu não gritei, você que ouviu errado.",1,gaslighting
-Você é emotiva demais pra ser levada a sério.,1,invalidação
-"Me passa a senha do seu celular agora, quero ver suas conversas.",1,controle
-"Se eu te vir com outro, você vai se arrepender de ter nascido.",1,ameaça
-Qual horário a gente se encontra amanhã?,0,cotidiano_neutro
-Estou morrendo de saudade de você.,0,expressao_idiomatica
-Vamos terapia de casal? Acho que pode ajudar a gente.,0,desabafo_e_dialogo
-"Apaga o contato dele agora, eu não aceito que você converse com ele.",1,controle
-"Não me sinto à vontade com essa brincadeira, pode parar?",0,limite_saudavel
-Não quero que você fale mais com as suas amigas.,1,controle
-Fica sabendo que eu vou te destruir se você me trocar por outro.,1,ameaça
-"Estou até o pescoço de trabalho, essa semana tá me matando.",0,expressao_idiomatica
-Essa dor de cabeça tá me matando.,0,expressao_idiomatica
-Estou magoada com aquilo e gostaria de conversar para resolvermos.,0,desabafo_e_dialogo
-"Eu nunca prometi nada disso, você inventa para me culpar.",1,gaslighting
-"A prova foi difícil, mas acho que fui bem.",0,cotidiano_neutro
-"Estou lendo um livro em que o assassino persegue a vítima, muito tenso.",0,ficcao_ou_citacao
-"Fica tranquilo, eu cuido do jantar hoje.",0,gratidao_cuidado_afeto
-"Acho que passamos do ponto na discussão, vamos respirar e voltar a falar.",0,desabafo_e_dialogo
-"Te amo, tenha um ótimo dia!",0,gratidao_cuidado_afeto
-Já enviei o relatório por e-mail.,0,cotidiano_neutro
-"Ninguém aguenta você, é por isso que não tem amigos.",1,humilhação
-Vou te caçar por toda a cidade até você aceitar sair pra tomar sorvete.,0,hiperbole_cotidiana
-"Larga de ser chata, você reclama de tudo.",1,invalidação
-"Muito obrigada por tudo hoje, você foi incrível.",0,gratidao_cuidado_afeto
-Vou aparecer de surpresa no seu aniversário com bolo e balão!,0,hiperbole_cotidiana
-"Prefiro que você não fale desse jeito comigo, me deixa desconfortável.",0,limite_saudavel
-Eu só fico com você por pena.,1,humilhação
-"Você entendeu tudo errado de novo, como sempre.",1,gaslighting
+Eu vou contar pra todo mundo as suas fotos se você terminar comigo.,1,chantagem_emocional
 "Me manda o endereço do restaurante, por favor.",0,cotidiano_neutro
-A reportagem falou de como reconhecer o gaslighting.,0,noticia_educacao_ficcao
-Vou te seguir em todas as redes só pra ver seus posts de viagem.,0,hiperbole_cotidiana
-Se você me denunciar eu faço você se arrepender de ter nascido.,1,ameaça
-"Vou te sequestrar pro cinema hoje, não aceito um não.",0,hiperbole_cotidiana
-"Eu te cobro a revanche do jogo até o fim do campeonato, kkkk.",0,hiperbole_cotidiana
-"Você é um fracasso, igual à sua família.",1,humilhação
-"Eu te amo, vou te seguir no Instagram assim que você criar a conta.",0,hiperbole_cotidiana
-"Se você me amasse de verdade, não ia sair com as suas amigas.",1,chantagem_emocional
-"Que saudade, morri de vontade de te ver.",0,expressao_idiomatica
-"Você é descartável, qualquer uma me serviria.",1,humilhação
-"Obrigado por me ouvir, você é uma ótima amiga.",0,gratidao_cuidado_afeto
-Você sempre exagera e reescreve o que acontece.,1,gaslighting
-Conseguiu resolver o problema do computador?,0,cotidiano_neutro
-Vou espalhar tudo sobre você e te perseguir até você sumir daqui.,1,ameaça
-Isso é invenção sua pra me fazer de vilão.,1,gaslighting
-"Você é uma nojenta, olha o seu estado.",1,xingamento
-"Eu me incomodei com a piada, podemos falar sobre isso?",0,desabafo_e_dialogo
-"Cuidado quando sair sozinha, eu posso estar por perto.",1,ameaça
-"Vou te sequestrar pra almoçar comigo domingo, aceita?",0,hiperbole_cotidiana
-"Se cuida, dirige com atenção e me manda mensagem quando chegar.",0,gratidao_cuidado_afeto
-"Vou te amarrar numa cadeira e te obrigar a assistir essa série, é ótima.",0,hiperbole_cotidiana
-Todo mundo sabe que você mente e exagera.,1,gaslighting
-"Isso me incomodou, queria que você soubesse.",0,limite_saudavel
-"Não vou poder te ajudar agora, estou no trabalho.",0,limite_saudavel
-"Vou te vigiar vinte e quatro horas, você não escapa de mim.",1,ameaça
-"Está tudo na sua cabeça, você sempre vê problema em tudo.",1,gaslighting
-Vou te perseguir até o fim do mundo se você não me mandar a foto desse cachorro agora.,0,hiperbole_cotidiana
-Não sei como alguém tão incompetente consegue emprego.,1,humilhação
-"Você não precisa trabalhar, eu decido o que você faz com o seu dinheiro.",1,controle
-"Sua desgraçada, eu me arrependo de ter te conhecido.",1,xingamento
-"Preciso de espaço hoje, mas amanhã conversamos.",0,critica_ou_discordancia_saudavel
-Eu errei ao gritar com você e peço desculpas de verdade.,0,desabafo_e_dialogo
-A psicóloga explicou que ameaças e controle são formas de violência.,0,noticia_educacao_ficcao
-"No seriado, o vilão ameaça a protagonista, mas ela consegue pedir ajuda.",0,noticia_educacao_ficcao
-Você sempre faz drama por tudo.,1,invalidação
-"Eu vou na sua casa te buscar pra gente ir juntas na formatura, combinado?",0,hiperbole_cotidiana
-Vamos fazer uma pausa e retomar quando estivermos mais calmos?,0,desculpas_e_dialogo
-"Não quero sair hoje, estou cansada. Fica pra outro dia?",0,critica_ou_discordancia_saudavel
-Você viu o jogo ontem? Que final emocionante!,0,cotidiano_neutro
-Essa dor nas costas está me matando desde cedo.,0,expressao_idiomatica
-"Eu quero saber cada passo seu, a cada hora você me manda foto.",1,controle
-"Meu dia hoje foi de matar, só tive reunião.",0,expressao_idiomatica
-"No jogo, meu personagem precisa matar o chefe final, tô travado nessa fase.",0,ficcao_ou_citacao
-"Entendo que você ficou chateada, e a sua razão faz sentido.",0,desculpas_e_dialogo
-"Se você não me mandar a foto do bebê eu vou invadir a sua casa, hahaha.",0,hiperbole_cotidiana
-Eu desisto de viver se você for embora.,1,chantagem_emocional
-"Vou te cobrar essa foto até o fim da vida, manda logo!",0,hiperbole_cotidiana
-"Não foi tão grave assim, você só gosta de aumentar as coisas.",1,invalidação
-"Seu bosta, só sabe estragar tudo.",1,xingamento
-"Seus sentimentos não importam, supera logo.",1,invalidação
-"Se você sair de casa, eu te sigo e você vai ver o que eu faço.",1,ameaça
-Me senti ignorada na reunião e queria te contar.,0,desabafo_e_dialogo
-Se você me deixar eu me mato e a culpa vai ser sua.,1,chantagem_emocional
-Marquei o dentista para segunda de manhã.,0,cotidiano_neutro
-Vou te caçar na festa pra tirar uma foto com você.,0,hiperbole_cotidiana
-"Boa sorte na entrevista, vai dar tudo certo!",0,gratidao_cuidado_afeto
-"Vai se f*der, sua vaca.",1,xingamento
-"Essa saudade tá me matando, vem me ver logo!",0,expressao_idiomatica
-"Para de frescura, não foi nada disso.",1,invalidação
-"Cuida do seu sono, você anda trabalhando demais.",0,gratidao_cuidado_afeto
-Prefiro que a gente dividia as contas igualmente.,0,critica_ou_discordancia_saudavel
-"Olha o que você me obriga a fazer, é por sua causa que eu sou assim.",1,chantagem_emocional
-"Ai, de novo esse chororô? Ninguém aguenta.",1,invalidação
-Já chegou em casa? Me avisa quando chegar.,0,cotidiano_neutro
-Posso te ligar mais tarde? Quero te explicar melhor o que sinto.,0,desabafo_e_dialogo
-"Quem decide as coisas aqui sou eu, você não opina.",1,controle
-"Se contar pra alguém sobre nós, vou dizer que você inventou tudo e todos vão te odiar.",1,chantagem_emocional
-Quem você pensa que é? Você não vale nada.,1,humilhação
-A lei Maria da Penha protege mulheres vítimas de violência doméstica.,0,noticia_educacao_ficcao
-"Eu te amo tanto que vou te apertar até você pedir socorro, ai que fofo.",0,hiperbole_cotidiana
-Eu te mato se te pegar com outro.,1,ameaça
-O livro conta a história de uma jovem que sofre perseguição do ex.,0,noticia_educacao_ficcao
-"Estou com ciúme, mas sei que o problema é meu e quero resolver.",0,desabafo_e_dialogo
-"Você é um idiota completo, não sei por que perco tempo contigo.",1,xingamento
-"Eu não vou poder ir, tenho outro compromisso.",0,critica_ou_discordancia_saudavel
 Você me mata de rir com essas histórias.,0,expressao_idiomatica
+"Estou orgulhosa de você, você se esforçou muito.",0,gratidao_cuidado_afeto
+"Que bom ver você feliz, mereceu muito essa conquista.",0,gratidao_cuidado_afeto
+"Seu imbecil, nunca acerta uma.",1,xingamento
+"Que linda a foto da viagem, onde foi isso?",0,cotidiano_neutro
+"Seu bosta, só sabe estragar tudo.",1,xingamento
 "Que susto, quase morri quando vi a nota da prova.",0,expressao_idiomatica
-"Fiquei chateado com a sua resposta, mas entendo que você estava cansada.",0,desabafo_e_dialogo
-"Seu lixo, eu tenho nojo de você.",1,xingamento
-"Você está lembrando errado, eu nunca te bati.",1,gaslighting
+"Da próxima vez que me responder assim, vai levar uma surra.",1,ameaça
+"Se precisar de qualquer coisa, pode contar comigo.",0,gratidao_cuidado_afeto
+Fica sabendo que eu vou te destruir se você me trocar por outro.,1,ameaça
+Eu te mato se te pegar com outro.,1,ameaça
+"Você entendeu tudo errado de novo, como sempre.",1,gaslighting
+"Vou parar de comer até você me perdoar, e a culpa é sua.",1,chantagem_emocional
+"Hoje o dia foi corrido, mas deu tudo certo.",0,cotidiano_neutro
+Eu vou surtar e sumir do mapa se essa internet não voltar logo!,0,frustracao_exagerada_e_cansaco
+"Você é descartável, qualquer uma me serviria.",1,humilhação
+Você é emotiva demais pra ser levada a sério.,1,invalidação
+"Para de frescura, não foi nada disso.",1,invalidação
+"Vai se f*der, sua vaca.",1,xingamento
+"Me passa a senha do seu celular agora, quero ver suas conversas.",1,controle
+"Quem decide as coisas aqui sou eu, você não opina.",1,controle
+"Vou ficar no seu pé até você me contar como foi o encontro, anda logo!",0,hiperbole_cotidiana
+"Quero entender o que você sentiu, pode me explicar?",0,desculpas_e_dialogo
+"Foi um mal-entendido da minha parte, me desculpa.",0,desculpas_e_dialogo
+"Se esquecer meu aniversário, eu te persigo com bolo até você pedir desculpas.",0,hiperbole_cotidiana
+Eu sou perdidamente apaixonado por você desde o primeiro encontro.,0,declaracao_romantica_intensa
+"Vou tirar o seu cartão, você gasta demais, eu cuido de tudo.",1,controle
 "Preciso de um tempo pra mim, depois a gente se fala.",0,limite_saudavel
+"Larga de ser chata, você reclama de tudo.",1,invalidação
+"Não concordo com você, mas respeito a sua opinião.",0,desabafo_e_dialogo
+"Me desculpa por ter levantado a voz ontem, errei e não vou repetir.",0,desculpas_e_dialogo
+"Olha o que você me obriga a fazer, é por sua causa que eu sou assim.",1,chantagem_emocional
+Você sempre exagera e reescreve o que acontece.,1,gaslighting
 "Se você não voltar pra mim, vai ter consequências que você não imagina.",1,ameaça
-"Hoje eu não vou conseguir sair, preciso descansar.",0,limite_saudavel
-"Você me deve uma foto do seu gato, vou cobrar até você mandar.",0,hiperbole_cotidiana
-O professor explicou o que é gaslighting na aula de psicologia.,0,ficcao_ou_citacao
+Vontade de sumir do mapa depois dessa reunião interminável.,0,frustracao_exagerada_e_cansaco
+Vamos fazer uma pausa e retomar quando estivermos mais calmos?,0,desculpas_e_dialogo
+Quando você menos esperar eu vou aparecer e você vai se arrepender.,1,ameaça
+Vou te caçar na festa pra tirar uma foto com você.,0,hiperbole_cotidiana
+"Essa foto ficou linda, manda mais!",0,cotidiano_neutro
+Manda o áudio agora senão eu vou aí ouvir ao vivo!,0,hiperbole_cotidiana
+O filme mostra uma mulher que escapa de um relacionamento abusivo.,0,noticia_educacao_ficcao
+O médico remarcou a consulta para sexta-feira.,0,cotidiano_neutro
+"Não me interessa como você se sente, resolve isso sozinha.",1,invalidação
+Essa dor de cabeça tá me matando.,0,expressao_idiomatica
+"Acho que passamos do ponto na discussão, vamos respirar e voltar a falar.",0,desabafo_e_dialogo
+"Te encho de abraço no minuto em que você chegar, vai se preparar!",0,hiperbole_cotidiana
+"Ninguém aguenta você, é por isso que não tem amigos.",1,humilhação
 "Eu vou te seguir até você voltar pra mim, e vai ser pior se tentar fugir.",1,ameaça
+"Se contar pra alguém sobre nós, vou dizer que você inventou tudo e todos vão te odiar.",1,chantagem_emocional
+"Eu sou completamente louca por você, não sei o que faria sem você na minha vida.",0,declaracao_romantica_intensa
+"Não achei engraçado, prefiro que não faça esse tipo de piada.",0,critica_ou_discordancia_saudavel
+"Essa saudade tá me matando, vem me ver logo!",0,expressao_idiomatica
+Marquei o dentista para segunda de manhã.,0,cotidiano_neutro
+"Minha mãe vai fazer macarrão, quer vir almoçar?",0,cotidiano_neutro
+"Ai, de novo esse chororô? Ninguém aguenta.",1,invalidação
+Estou lendo um artigo sobre manipulação emocional em relacionamentos.,0,noticia_educacao_ficcao
+Com esse seu cérebro você nunca vai ser ninguém.,1,humilhação
+"Que saudade, morri de vontade de te ver.",0,expressao_idiomatica
+"Não quero sair hoje, estou cansada. Fica pra outro dia?",0,critica_ou_discordancia_saudavel
+"Se você não vier ao churrasco, eu mesmo vou te buscar de carro.",0,hiperbole_cotidiana
+"No filme, o personagem diz 'vou te matar'; achei a cena engraçada.",0,ficcao_ou_citacao
+"Se contar pra sua mãe, você vai ver o que acontece.",1,ameaça
+"Se você me deixar, eu vou atrás da sua família também.",1,ameaça
+Parabéns pelo seu aniversário! Muita saúde!,0,cotidiano_neutro
+"Obrigado por me ouvir, você é uma ótima amiga.",0,gratidao_cuidado_afeto
+Eu só fico com você por pena.,1,humilhação
+"Eu te amo tanto que vou te apertar até você pedir socorro, ai que fofo.",0,hiperbole_cotidiana
+Se o wi-fi cair no meio da reunião de novo eu juro que surto.,0,frustracao_exagerada_e_cansaco
+"Se eu te vir com outro, você vai se arrepender de ter nascido.",1,ameaça
+"Se você for na festa, eu te pego na saída.",1,ameaça
+"Obrigado por ter me dito o que sentiu, vou prestar mais atenção.",0,desculpas_e_dialogo
+Morri de vergonha na apresentação.,0,expressao_idiomatica
+Quem você pensa que é? Você não vale nada.,1,humilhação
+"Cuidado quando sair sozinha, eu posso estar por perto.",1,ameaça
+Se você não me convidar pro churrasco eu apareço de surpresa.,0,hiperbole_cotidiana
+Eu desisto de viver se você for embora.,1,chantagem_emocional
+"Bom trabalho na apresentação, você foi muito bem.",0,gratidao_cuidado_afeto
+"Essa novela vai me matar de ansiedade, que capítulo!",0,expressao_idiomatica
+"Eu não vou te deixar em paz nunca, aonde você for eu estarei.",1,ameaça
+Fiquei morrendo de vergonha quando tropecei na frente de todos.,0,expressao_idiomatica
+"Se você não ficar comigo, eu faço uma besteira.",1,chantagem_emocional
+"Você é uma nojenta, olha o seu estado.",1,xingamento
+"Vou te vigiar vinte e quatro horas, você não escapa de mim.",1,ameaça
+"A prova foi difícil, mas acho que fui bem.",0,cotidiano_neutro
+Já chegou em casa? Me avisa quando chegar.,0,cotidiano_neutro
+"Preciso estudar para a prova de amanhã, falamos depois.",0,cotidiano_neutro
+"Não importa pra onde você vá, eu vou te encontrar.",1,ameaça
+"Quero um abraço bem apertado, estou com saudade.",0,cotidiano_neutro
+"Você é instável, ninguém vai acreditar em você.",1,gaslighting
+"Seu lixo, eu tenho nojo de você.",1,xingamento
+"Eu nunca prometi nada disso, você inventa para me culpar.",1,gaslighting
+A campanha explica como identificar sinais de violência psicológica.,0,noticia_educacao_ficcao
+O livro conta a história de uma jovem que sofre perseguição do ex.,0,noticia_educacao_ficcao
+"Se você sair de casa, eu te sigo e você vai ver o que eu faço.",1,ameaça
+Todo mundo sabe que você mente e exagera.,1,gaslighting
+Vou espalhar tudo sobre você e te perseguir até você sumir daqui.,1,ameaça
+"Se você me amasse de verdade, não ia sair com as suas amigas.",1,chantagem_emocional
+"Vou te amarrar numa cadeira e te obrigar a assistir essa série, é ótima.",0,hiperbole_cotidiana
+Não sei como alguém tão incompetente consegue emprego.,1,humilhação
+Vou te perseguir até o fim do mundo se você não me mandar a foto desse cachorro agora.,0,hiperbole_cotidiana
+"Fiquei triste com o que aconteceu, mas quero conversar e resolver.",0,desabafo_e_dialogo
+"Fica tranquilo, eu cuido do jantar hoje.",0,gratidao_cuidado_afeto
+Vou enlouquecer tentando entender essa matéria da faculdade.,0,frustracao_exagerada_e_cansaco
+"Vou te sequestrar pra almoçar comigo domingo, aceita?",0,hiperbole_cotidiana
+"Estou morrendo de curiosidade, me conta logo!",0,expressao_idiomatica
+Você vai me matar de tanto rir com essas histórias.,0,expressao_idiomatica
+"Você está lembrando errado, eu nunca te bati.",1,gaslighting
+"Eu não gritei, você que ouviu errado.",1,gaslighting
+"Você me deve uma foto do seu gato, vou cobrar até você mandar.",0,hiperbole_cotidiana
+"Hoje eu não vou conseguir sair, preciso descansar.",0,limite_saudavel
+"Eu te sigo até o fim do mundo se for pra ir num show com você, bora?",0,hiperbole_cotidiana
+"Prefiro dividir as tarefas de casa, acho mais justo.",0,limite_saudavel
+Não quero que você fale mais com as suas amigas.,1,controle
+Vou te caçar por toda a cidade até você aceitar sair pra tomar sorvete.,0,hiperbole_cotidiana
+Qual horário a gente se encontra amanhã?,0,cotidiano_neutro
+"Esse relatório tem alguns erros, vou te mostrar onde.",0,critica_ou_discordancia_saudavel
+Você sempre faz drama por tudo.,1,invalidação
+Bom dia! Tudo bem com você?,0,cotidiano_neutro
+"Você é um idiota completo, não sei por que perco tempo contigo.",1,xingamento
+"Estou com ciúme, mas sei que o problema é meu e quero resolver.",0,desabafo_e_dialogo
+"Estou lendo um livro em que o assassino persegue a vítima, muito tenso.",0,ficcao_ou_citacao
+"Não foi tão grave assim, você só gosta de aumentar as coisas.",1,invalidação
+Vou te seguir em todas as redes só pra ver seus posts de viagem.,0,hiperbole_cotidiana
+"Comprei pão e leite, precisa de mais alguma coisa?",0,cotidiano_neutro
+"Se você comer o último pedaço de bolo, vai ter troco, vou te pegar de jeito!",0,hiperbole_cotidiana
+"Vou te cobrar essa foto até o fim da vida, manda logo!",0,hiperbole_cotidiana
+"Desculpa pelo que eu falei ontem, eu estava nervoso e errei.",0,desabafo_e_dialogo
+Eu quero me matar depois de trabalhar tanto.,0,frustracao_exagerada_e_cansaco
+"No seriado, o vilão ameaça a protagonista, mas ela consegue pedir ajuda.",0,noticia_educacao_ficcao
+Quero me enterrar num buraco de tanta vergonha que passei na apresentação.,0,frustracao_exagerada_e_cansaco
+"Sou completamente doida por você, meu bem, boa viagem e volta logo!",0,declaracao_romantica_intensa
 Tá de TPM de novo? Por isso vive reclamando de besteira.,1,invalidação
+"Eu quero saber cada passo seu, a cada hora você me manda foto.",1,controle
+"Sua desgraçada, eu me arrependo de ter te conhecido.",1,xingamento
+"Se eu não tomar um café, eu morro.",0,expressao_idiomatica
+Se você me deixar eu me mato e a culpa vai ser sua.,1,chantagem_emocional
+"Acho que você poderia ter avisado antes, fiquei preocupado.",0,critica_ou_discordancia_saudavel
+"Comprei o presente, depois te mostro.",0,cotidiano_neutro
 Li que ameaçar alguém é crime previsto em lei.,0,ficcao_ou_citacao
-"Todo mundo ri de você pelas costas, sabia?",1,humilhação
+A lei Maria da Penha protege mulheres vítimas de violência doméstica.,0,noticia_educacao_ficcao
+Estou louco pra chegar logo o fim de semana e ficar grudado em você.,0,declaracao_romantica_intensa
+"Te amo, tenha um ótimo dia!",0,gratidao_cuidado_afeto
+"Se você não vier na minha festa eu nunca mais falo com você, brincadeira!",0,hiperbole_cotidiana
+"A pizza chegou, vem comer antes que esfrie!",0,cotidiano_neutro
+Estou morta de cansaço depois dessa reunião.,0,expressao_idiomatica
+"Você não sabe fazer nada direito, é um peso na minha vida.",1,humilhação
+"Eu não quero ir nesse evento, prefiro ficar em casa.",0,limite_saudavel
+"Apaga o contato dele agora, eu não aceito que você converse com ele.",1,controle
+"Se você não me mandar o vídeo do gato eu vou te perseguir por todas as redes, kkk.",0,hiperbole_cotidiana
+"Você é um fracasso, igual à sua família.",1,humilhação
+Se chover no dia da mudança eu vou sentar na calçada e chorar até sumir.,0,frustracao_exagerada_e_cansaco
+Estou chateada com a sua atitude e quero falar sobre isso.,0,limite_saudavel
+"Você não precisa trabalhar, eu decido o que você faz com o seu dinheiro.",1,controle
+"Minha amiga me contou que ouviu 'você é louca' do ex, ela está procurando ajuda.",0,ficcao_ou_citacao
+Você está confundindo as coisas porque é desequilibrada.,1,gaslighting
+Juro que vou surtar se esse computador travar mais uma vez hoje.,0,frustracao_exagerada_e_cansaco
+"Se você não me mandar a foto do bebê eu vou invadir a sua casa, hahaha.",0,hiperbole_cotidiana
+"Estou morta de fome, vamos jantar?",0,expressao_idiomatica
 Vou destruir a sua vida se você me largar.,1,ameaça
 "Eu escolho as roupas que você vai usar, aquela não.",1,controle
-Eu vou contar pra todo mundo as suas fotos se você terminar comigo.,1,chantagem_emocional
+Manda o print do meme agora ou eu te assombro pra sempre kkk.,0,hiperbole_cotidiana
 "Pode mudar de cidade, eu vou atrás de você.",1,ameaça
-"Se esquecer meu aniversário, eu te persigo com bolo até você pedir desculpas.",0,hiperbole_cotidiana
-"Se você não vier ao churrasco, eu mesmo vou te buscar de carro.",0,hiperbole_cotidiana
-"Essa novela vai me matar de ansiedade, que capítulo!",0,expressao_idiomatica
-"Se você não me mandar o vídeo do gato eu vou te perseguir por todas as redes, kkk.",0,hiperbole_cotidiana
-Vou te perseguir pelo grupo da família até você responder a enquete da ceia.,0,hiperbole_cotidiana
+Me senti ignorada na reunião e queria te contar.,0,desabafo_e_dialogo
+"Seus sentimentos não importam, supera logo.",1,invalidação
+"Para de se fazer de vítima, não aconteceu nada de mais.",1,invalidação
+"Fica à vontade, a casa é sua.",0,gratidao_cuidado_afeto
+"Vi uma reportagem sobre violência doméstica, é importante falar sobre isso.",0,ficcao_ou_citacao
+Posso te ligar mais tarde? Quero te explicar melhor o que sinto.,0,desabafo_e_dialogo
+Tô quase surtando com o barulho dessa obra aqui do lado.,0,frustracao_exagerada_e_cansaco
+"Se cuida, dirige com atenção e me manda mensagem quando chegar.",0,gratidao_cuidado_afeto
 Vou te perseguir até o fim do mundo se você me deixar.,1,ameaça
 "Você vai me matar do coração, olha o que faz comigo.",1,chantagem_emocional
-"Para de se fazer de vítima, não aconteceu nada de mais.",1,invalidação
+"Eu gostaria de decidir isso com mais tempo, pode ser?",0,limite_saudavel
 "Você está maluca, vai se tratar, isso não foi o que aconteceu.",1,gaslighting
 "Cala essa boca, sua estúpida.",1,xingamento
-"Eu te sigo até o fim do mundo se for pra ir num show com você, bora?",0,hiperbole_cotidiana
-"Não me interessa como você se sente, resolve isso sozinha.",1,invalidação
-Posso te ligar quando sair da reunião?,0,cotidiano_neutro
+"Vou te sequestrar pro cinema hoje, não aceito um não.",0,hiperbole_cotidiana
+"Valeu pela carona, você me salvou hoje!",0,gratidao_cuidado_afeto
+"Estou completamente apaixonada, fico boba só de olhar pra você.",0,declaracao_romantica_intensa
+Eu vou morrer se tiver que refazer essa planilha inteira do zero.,0,frustracao_exagerada_e_cansaco
 "Que mulher ridícula, sua cretina.",1,xingamento
-"Cala a boca, sua idiota.",1,xingamento
-Vou aparecer no seu trabalho e fazer um escândalo se me bloquear.,1,ameaça
-"Eu sei onde você estuda, vai se arrepender se não me obedecer.",1,ameaça
-Parabéns pelo seu aniversário! Muita saúde!,0,cotidiano_neutro
-"Perdi a paciência e falei mal, sinto muito, vamos conversar?",0,desculpas_e_dialogo
-"Sua inútil, some da minha frente.",1,xingamento
+"Se você não me contar como foi a viagem eu vou te perturbar até domingo, brincadeira.",0,hiperbole_cotidiana
+Morri de rir com o que você disse na reunião.,0,expressao_idiomatica
+Eu errei ao gritar com você e peço desculpas de verdade.,0,desabafo_e_dialogo
+Vou aparecer de surpresa no seu aniversário com bolo e balão!,0,hiperbole_cotidiana
+"Não tem motivo pra chorar, você é muito sensível.",1,invalidação
+"Eu te cobro a revanche do jogo até o fim do campeonato, kkkk.",0,hiperbole_cotidiana
+Vou te atormentar pedindo a receita até você me passar.,0,hiperbole_cotidiana
 "Eu só estava brincando, você que é sensível demais e distorce tudo.",1,gaslighting
-"Minha mãe vai fazer macarrão, quer vir almoçar?",0,cotidiano_neutro
-"Preciso estudar para a prova, falamos mais tarde.",0,cotidiano_neutro
-"Fiquei nervoso e disse coisas que não sentia, desculpa de verdade.",0,desculpas_e_dialogo
+"Trabalhei tanto hoje que minha cabeça vai explodir, só quero minha cama.",0,frustracao_exagerada_e_cansaco
+"Se você me deixar sozinha com esse filme de terror eu nunca mais te perdoo, sério!",0,hiperbole_cotidiana
+Já enviei o relatório por e-mail.,0,cotidiano_neutro
 Você me envergonha na frente dos meus amigos.,1,humilhação
 "Entrega o seu salário pra mim, eu administro.",1,controle
 "Só eu te aguento, se me deixar vai ficar sozinha pra sempre.",1,chantagem_emocional
-"Vou te perseguir no Spotify até você ouvir essa música, é perfeita!",0,hiperbole_cotidiana
-"Se eu não tomar um café, eu morro.",0,expressao_idiomatica
+"Tô morrendo de frio, esqueci o casaco em casa.",0,expressao_idiomatica
+"Preciso de espaço hoje, mas amanhã conversamos.",0,critica_ou_discordancia_saudavel
+Pode me mandar o endereço da loja?,0,cotidiano_neutro
+Se você perder o jogo hoje eu vou te zoar até o fim do ano.,0,hiperbole_cotidiana
 Com quem você estava? Manda a localização em tempo real o dia todo.,1,controle
-"Não concordo, mas entendo o seu ponto de vista.",0,limite_saudavel
-"Bom trabalho na apresentação, você foi muito bem.",0,gratidao_cuidado_afeto
-Vou morrer de rir quando contarem essa pra ela.,0,expressao_idiomatica
-"Você não perde por esperar, eu vou me vingar.",1,ameaça
-"Essa foto ficou linda, manda mais!",0,cotidiano_neutro
-"No filme, o personagem diz 'vou te matar'; achei a cena engraçada.",0,ficcao_ou_citacao
-"Estou morta de fome, vamos jantar?",0,expressao_idiomatica
-"Fiquei triste com o que aconteceu, mas quero conversar e resolver.",0,desabafo_e_dialogo
+Dá vontade de me matar de tanto estudar pra essa prova de cálculo.,0,frustracao_exagerada_e_cansaco
+"Eu te amo, vou te seguir no Instagram assim que você criar a conta.",0,hiperbole_cotidiana
+"Não quero conversar sobre isso agora, mas podemos falar amanhã.",0,limite_saudavel
+"Hoje o dia foi puxado, mas deu tudo certo.",0,cotidiano_neutro
+"Não vou poder te ajudar agora, estou no trabalho.",0,limite_saudavel
+O jantar fica pronto em vinte minutos.,0,cotidiano_neutro
+"Eu não vou poder ir, tenho outro compromisso.",0,critica_ou_discordancia_saudavel
+"Se você não provar o meu bolo, eu vou atrás de você com uma fatia na mão, kkk.",0,hiperbole_cotidiana
+"Boa sorte na entrevista, vai dar tudo certo!",0,gratidao_cuidado_afeto
+"Chorar não resolve nada, pare de se vitimizar.",1,invalidação
+"Discordo de você nesse ponto, acho que o projeto precisa de mais tempo.",0,critica_ou_discordancia_saudavel
+Eu vou ficar na sua cola até você me obedecer.,1,ameaça
 Você vai se arrepender muito se sair por aquela porta.,1,ameaça
-"Vou pegar o ônibus das sete, chego em meia hora.",0,cotidiano_neutro
+Sou louca por você e pelo jeito que você me faz rir até nos dias difíceis.,0,declaracao_romantica_intensa
 "Vou ficar mal e a culpa vai ser sua, a decisão é sua.",1,chantagem_emocional
 "Se você não me contar a fofoca agora eu não durmo, vou te atormentar.",0,hiperbole_cotidiana
-"Obrigado por ter me dito o que sentiu, vou prestar mais atenção.",0,desculpas_e_dialogo
-"Você é medíocre, nunca vai chegar a lugar nenhum.",1,humilhação
-Fiquei morrendo de vergonha quando tropecei na frente de todos.,0,expressao_idiomatica
+"Eu me incomodei com a piada, podemos falar sobre isso?",0,desabafo_e_dialogo
+Essa dor nas costas está me matando desde cedo.,0,expressao_idiomatica
+"Esse filme é de matar, chorei de rir.",0,expressao_idiomatica
+Prepara que eu vou te encher de cócegas assim que te encontrar.,0,hiperbole_cotidiana
+"Percebi que te ignorei, e quero reparar isso.",0,desculpas_e_dialogo
 "Você é patético, uma piada ambulante, seu otário.",1,xingamento
+O professor explicou o que é gaslighting na aula de psicologia.,0,ficcao_ou_citacao
 "Se você sair, nem se dê o trabalho de voltar, mas depois não reclama quando eu sumir.",1,chantagem_emocional
+Estou morrendo de saudade de você.,0,expressao_idiomatica
 "Você é burra demais pra entender isso, nem adianta explicar.",1,humilhação
 "Ninguém vai te querer, você não presta pra nada.",1,humilhação
 "Isso não é nada, você só quer chamar atenção.",1,invalidação
-"Se você não provar o meu bolo, eu vou atrás de você com uma fatia na mão, kkk.",0,hiperbole_cotidiana
+"Não gostei do resultado, podemos refazer essa parte?",0,critica_ou_discordancia_saudavel
+Vou te perseguir pelo grupo da família até você responder a enquete da ceia.,0,hiperbole_cotidiana
 "Animal, não sabe nem falar direito.",1,xingamento
 "Se você me largar, eu te persigo pra sempre, não vai ter paz.",1,ameaça
-"Isso nunca aconteceu, você está inventando coisas.",1,gaslighting
+Depois de lavar toda essa louça eu só quero morrer na cama e dormir doze horas.,0,frustracao_exagerada_e_cansaco
+"No jogo, meu personagem precisa matar o chefe final, tô travado nessa fase.",0,ficcao_ou_citacao
+Estou magoada com aquilo e gostaria de conversar para resolvermos.,0,desabafo_e_dialogo
+"Fiquei chateado com a sua resposta, mas entendo que você estava cansada.",0,desabafo_e_dialogo
 "Nunca falei isso. Você precisa de ajuda, está vendo coisas.",1,gaslighting
-"Te encho de abraço no minuto em que você chegar, vai se preparar!",0,hiperbole_cotidiana
+Conseguiu resolver o problema do computador?,0,cotidiano_neutro
+"Reconheço que exagerei na discussão, me perdoa.",0,desculpas_e_dialogo
 "Que burra que você é, não aprende nunca.",1,xingamento
-Você vai me matar de tanto rir com essas histórias.,0,expressao_idiomatica
+"Entendo que você ficou chateada, e a sua razão faz sentido.",0,desculpas_e_dialogo
 "Você tem problema de memória, não foi nada disso.",1,gaslighting
 Não me enche com esses seus dramas.,1,invalidação
-A campanha explica como identificar sinais de violência psicológica.,0,noticia_educacao_ficcao
-"Quero entender o que você sentiu, pode me explicar?",0,desculpas_e_dialogo
-Morri de rir com o que você disse na reunião.,0,expressao_idiomatica
-Vou te quebrar toda se você contar isso pra alguém.,1,ameaça
-"Minha amiga me contou que ouviu 'você é louca' do ex, ela está procurando ajuda.",0,ficcao_ou_citacao
-"Se você acha que isso aconteceu, é porque está ficando louca.",1,gaslighting
-"Não gostei do resultado, podemos refazer essa parte?",0,critica_ou_discordancia_saudavel
-"Se contar pra sua mãe, você vai ver o que acontece.",1,ameaça
-"Chorar não resolve nada, pare de se vitimizar.",1,invalidação
-"Vi uma reportagem sobre violência doméstica, é importante falar sobre isso.",0,ficcao_ou_citacao
-"Se você comer o último pedaço de bolo, vai ter troco, vou te pegar de jeito!",0,hiperbole_cotidiana
-"Eu não vou te deixar em paz nunca, aonde você for eu estarei.",1,ameaça
-"Discordo de você nesse ponto, acho que o projeto precisa de mais tempo.",0,critica_ou_discordancia_saudavel
-"Você não sabe fazer nada direito, é um peso na minha vida.",1,humilhação
-"Vou parar de comer até você me perdoar, e a culpa é sua.",1,chantagem_emocional
-"Da próxima vez que me responder assim, vai levar uma surra.",1,ameaça
-Esse trânsito vai me matar hoje.,0,expressao_idiomatica
-"Eu sacrifiquei tudo por você e você nem agradece, ingrata.",1,chantagem_emocional
-Eu vou ficar na sua cola até você me obedecer.,1,ameaça
-"Desculpa pelo que eu falei ontem, eu estava nervoso e errei.",0,desabafo_e_dialogo
-"Não quero conversar sobre isso agora, mas podemos falar amanhã.",0,limite_saudavel
 "Você é uma vagabunda mesmo, não serve pra nada.",1,xingamento
-O filme mostra uma mulher que escapa de um relacionamento abusivo.,0,noticia_educacao_ficcao
-"Preciso estudar para a prova de amanhã, falamos depois.",0,cotidiano_neutro
+Posso te ligar quando sair da reunião?,0,cotidiano_neutro
+A reportagem falou de como reconhecer o gaslighting.,0,noticia_educacao_ficcao
 O podcast de hoje aborda como ajudar uma amiga que sofre violência.,0,noticia_educacao_ficcao
-Quando você menos esperar eu vou aparecer e você vai se arrepender.,1,ameaça
-"Acho que você poderia ter avisado antes, fiquei preocupado.",0,critica_ou_discordancia_saudavel
-"Tô morrendo de frio, esqueci o casaco em casa.",0,expressao_idiomatica
-Manda o print do meme agora ou eu te assombro pra sempre kkk.,0,hiperbole_cotidiana
-"Esse filme é de matar, chorei de rir.",0,expressao_idiomatica
-"Se você me deixar, eu vou atrás da sua família também.",1,ameaça
-Estou morta de cansaço depois dessa reunião.,0,expressao_idiomatica
-Vou te atormentar pedindo a receita até você me passar.,0,hiperbole_cotidiana
-Bom dia! Tudo bem com você?,0,cotidiano_neutro
-"Comprei pão e leite, precisa de mais alguma coisa?",0,cotidiano_neutro
-Com esse seu cérebro você nunca vai ser ninguém.,1,humilhação
-Se você não me convidar pro churrasco eu apareço de surpresa.,0,hiperbole_cotidiana
-"Hoje o dia foi corrido, mas deu tudo certo.",0,cotidiano_neutro
-"Seu imbecil, nunca acerta uma.",1,xingamento
-"Esse relatório tem alguns erros, vou te mostrar onde.",0,critica_ou_discordancia_saudavel
-"Não tem motivo pra chorar, você é muito sensível.",1,invalidação
-"Não importa pra onde você vá, eu vou te encontrar.",1,ameaça
-Manda o áudio agora senão eu vou aí ouvir ao vivo!,0,hiperbole_cotidiana
-"Se precisar de qualquer coisa, pode contar comigo.",0,gratidao_cuidado_afeto
-"Quero um abraço bem apertado, estou com saudade.",0,cotidiano_neutro
-"Você é instável, ninguém vai acreditar em você.",1,gaslighting
-"Fica à vontade, a casa é sua.",0,gratidao_cuidado_afeto
-"O trânsito hoje foi de matar, cheguei atrasada.",0,expressao_idiomatica
-"Isso que você sente é bobeira, ninguém liga.",1,invalidação
-Prepara que eu vou te encher de cócegas assim que te encontrar.,0,hiperbole_cotidiana
-"Que linda a foto da viagem, onde foi isso?",0,cotidiano_neutro
-"Se você me deixar sozinha com esse filme de terror eu nunca mais te perdoo, sério!",0,hiperbole_cotidiana
-"Que bom ver você feliz, mereceu muito essa conquista.",0,gratidao_cuidado_afeto
-"Se você não vier na minha festa eu nunca mais falo com você, brincadeira!",0,hiperbole_cotidiana
+"Estou até o pescoço de trabalho, essa semana tá me matando.",0,expressao_idiomatica
+Você viu o jogo ontem? Que final emocionante!,0,cotidiano_neutro
+"Estou magoado com o que aconteceu, mas quero resolver juntos.",0,desculpas_e_dialogo
+Vou te quebrar toda se você contar isso pra alguém.,1,ameaça
+"Combinado, nos vemos às cinco na estação.",0,cotidiano_neutro
+"Se você acha que isso aconteceu, é porque está ficando louca.",1,gaslighting
 Se não fosse por mim você seria um nada.,1,humilhação
-"Estou morrendo de curiosidade, me conta logo!",0,expressao_idiomatica
-"Não concordo com você, mas respeito a sua opinião.",0,desabafo_e_dialogo
-"A pizza chegou, vem comer antes que esfrie!",0,cotidiano_neutro
-"Reconheço que exagerei na discussão, me perdoa.",0,desculpas_e_dialogo
-O jantar fica pronto em vinte minutos.,0,cotidiano_neutro
-"Se você não me contar como foi a viagem eu vou te perturbar até domingo, brincadeira.",0,hiperbole_cotidiana
-"Se você não ficar comigo, eu faço uma besteira.",1,chantagem_emocional
+"Eu vou pirar se não tomar um café agora mesmo, que sono!",0,frustracao_exagerada_e_cansaco
+"Isso que você sente é bobeira, ninguém liga.",1,invalidação
+"Você não perde por esperar, eu vou me vingar.",1,ameaça
+Isso é invenção sua pra me fazer de vilão.,1,gaslighting
+"Vou te perseguir no Spotify até você ouvir essa música, é perfeita!",0,hiperbole_cotidiana
+"Não sei o que seria da minha rotina sem o seu bom dia, te adoro demais!",0,declaracao_romantica_intensa
+"Cala a boca, sua idiota.",1,xingamento
+"Isso me incomodou, queria que você soubesse.",0,limite_saudavel
+"Está tudo na sua cabeça, você sempre vê problema em tudo.",1,gaslighting
+Vamos terapia de casal? Acho que pode ajudar a gente.,0,desabafo_e_dialogo
+"Sou completamente rendida por você, meu coração chega a disparar.",0,declaracao_romantica_intensa
+"Amo você demais, sou o cara mais sortudo do mundo por te ter na minha vida.",0,declaracao_romantica_intensa
+"Você é tudo pra mim, obrigada por ser um parceiro tão carinhoso.",0,declaracao_romantica_intensa
+"Não me sinto à vontade com essa brincadeira, pode parar?",0,limite_saudavel
+"Eu sei onde você estuda, vai se arrepender se não me obedecer.",1,ameaça
+"Sua inútil, some da minha frente.",1,xingamento
+"Eu sacrifiquei tudo por você e você nem agradece, ingrata.",1,chantagem_emocional
+"Eu vou te seguir na corrida de domingo pra te acompanhar, topa?",0,hiperbole_cotidiana
+"Cuidado na estrada, me avisa quando chegar.",0,cotidiano_neutro
+Esse trânsito vai me matar hoje.,0,expressao_idiomatica
+Vou morrer de rir quando contarem essa pra ela.,0,expressao_idiomatica
+"Você é medíocre, nunca vai chegar a lugar nenhum.",1,humilhação
+Eu vou enlouquecer se ficar mais meia hora presa nesse trânsito.,0,frustracao_exagerada_e_cansaco
+"Vou surtar com esse calor, o ventilador não dá conta.",0,frustracao_exagerada_e_cansaco
+"Isso nunca aconteceu, você está inventando coisas.",1,gaslighting
+Vou aparecer no seu trabalho e fazer um escândalo se me bloquear.,1,ameaça
+"Todo mundo ri de você pelas costas, sabia?",1,humilhação
+Se você me denunciar eu faço você se arrepender de ter nascido.,1,ameaça
+Prefiro que a gente dividia as contas igualmente.,0,critica_ou_discordancia_saudavel
+"Eu vou na sua casa te buscar pra gente ir juntas na formatura, combinado?",0,hiperbole_cotidiana
 "Vai ter troco, eu vou te pegar quando você menos esperar.",1,ameaça
-Estou lendo um artigo sobre manipulação emocional em relacionamentos.,0,noticia_educacao_ficcao
-"Me desculpa por ter levantado a voz ontem, errei e não vou repetir.",0,desculpas_e_dialogo
+Podemos recomeçar essa conversa com mais calma?,0,desculpas_e_dialogo
+"Na aula, discutimos o que caracteriza um relacionamento tóxico.",0,noticia_educacao_ficcao
 "Na novela de hoje o marido controlava tudo, que personagem odioso.",0,ficcao_ou_citacao
 "Obrigado por me ouvir, eu estava precisando.",0,desabafo_e_dialogo
 "Você não tem coração, vai me deixar sofrer assim?",1,chantagem_emocional
+"O trânsito hoje foi de matar, cheguei atrasada.",0,expressao_idiomatica
+Tô surtando de ansiedade pra saber o resultado do processo seletivo.,0,frustracao_exagerada_e_cansaco
 "Todo mundo me abandona por sua causa, você é egoísta.",1,chantagem_emocional
+"Você me faz tão bem que nem sei como vivia antes de te conhecer, te amo!",0,declaracao_romantica_intensa
 "Assisti ao jogo ontem, que partida emocionante!",0,cotidiano_neutro
-"Percebi que te ignorei, e quero reparar isso.",0,desculpas_e_dialogo
 Se você falar com ele de novo eu faço algo contra você.,1,ameaça
 "Vou ficar até mais tarde no trabalho hoje, não me espere para o jantar.",0,cotidiano_neutro
 "O vilão da série ameaça o herói o tempo todo, a atuação é ótima.",0,ficcao_ou_citacao
 Posso dar uma opinião? Acho que você pode melhorar a apresentação.,0,critica_ou_discordancia_saudavel
-"Eu vou te seguir na corrida de domingo pra te acompanhar, topa?",0,hiperbole_cotidiana
-Podemos recomeçar essa conversa com mais calma?,0,desculpas_e_dialogo
+"Cuida do seu sono, você anda trabalhando demais.",0,gratidao_cuidado_afeto
+"Perdi a paciência e falei mal, sinto muito, vamos conversar?",0,desculpas_e_dialogo
+"Muito obrigada por tudo hoje, você foi incrível.",0,gratidao_cuidado_afeto
 "Quero ver o seu celular toda noite, se não tem nada a esconder, mostra.",1,controle
 "Até uma criança entenderia isso, mas você não.",1,humilhação
 "Se você for trabalhar, eu vou passar mal e você vai se sentir culpada.",1,chantagem_emocional
 "A música diz 'eu vou te achar em qualquer lugar', amo essa letra.",0,ficcao_ou_citacao
 Vou te cobrar essa pizza pelo resto da vida.,0,hiperbole_cotidiana
-"Comprei o presente, depois te mostro.",0,cotidiano_neutro
+"Você me deixa louca de amor, que saudade do seu abraço!",0,declaracao_romantica_intensa
 "Você vai fazer o que eu mandar, sem discutir.",1,controle
 "Nossa, como você é feia sem maquiagem, dá pra sair assim não.",1,humilhação
 Vou te encher de mensagem até você marcar esse café comigo.,0,hiperbole_cotidiana
-Estou chateada com a sua atitude e quero falar sobre isso.,0,limite_saudavel
+"Quero me matar de tanto que comi nesse rodízio, não consigo nem andar.",0,frustracao_exagerada_e_cansaco
+"Meu dia hoje foi de matar, só tive reunião.",0,expressao_idiomatica
 "Isso é drama, você faz tempestade em copo d'água.",1,invalidação
-"Estou orgulhosa de você, você se esforçou muito.",0,gratidao_cuidado_afeto
+Essa fila do banco tá me fazendo querer surtar e sair correndo.,0,frustracao_exagerada_e_cansaco
 Vamos ao cinema no sábado?,0,cotidiano_neutro
-"Valeu pela carona, você me salvou hoje!",0,gratidao_cuidado_afeto
-"Hoje o dia foi puxado, mas deu tudo certo.",0,cotidiano_neutro
+Fico boba e completamente louca de paixão quando você canta pra mim.,0,declaracao_romantica_intensa
+"Meu coração é todo seu, sou completamente apaixonada por nós dois.",0,declaracao_romantica_intensa
 "Vou ficar na sua cola até você aceitar ir comigo no show, é imperdível!",0,hiperbole_cotidiana
 "Ninguém além de você acha isso, é coisa da sua cabeça.",1,gaslighting
+"Fiquei nervoso e disse coisas que não sentia, desculpa de verdade.",0,desculpas_e_dialogo
 Você engordou tanto que dá vergonha te apresentar pra alguém.,1,humilhação
 "Meu humor depende de você, se eu surtar a culpa é toda sua.",1,chantagem_emocional
 Você não vai visitar a sua família esse fim de semana.,1,controle
@@ -293,19 +328,23 @@ Você não vai visitar a sua família esse fim de semana.,1,controle
 "Tô morrendo de fome, vamos almoçar?",0,expressao_idiomatica
 "Para de inventar história, ninguém nunca te tratou mal.",1,gaslighting
 Isso tá me matando de rir.,0,expressao_idiomatica
+"Não concordo, mas entendo o seu ponto de vista.",0,limite_saudavel
 A reunião foi adiada para quinta-feira às 14h.,0,cotidiano_neutro
-"Eu não quero ir nesse evento, prefiro ficar em casa.",0,limite_saudavel
-"Foi um mal-entendido da minha parte, me desculpa.",0,desculpas_e_dialogo
+Se esse sistema cair de novo eu sumo do mapa e vou vender coco na praia!,0,frustracao_exagerada_e_cansaco
+"Sou louca por cada detalhe seu, amo dividir a vida com você.",0,declaracao_romantica_intensa
 "Fica esperta, porque eu posso perder a cabeça com você.",1,ameaça
-"Na aula, discutimos o que caracteriza um relacionamento tóxico.",0,noticia_educacao_ficcao
-"Preciso falar sobre o que me incomodou, mas sem brigar.",0,desculpas_e_dialogo
+Dá vontade de sumir quando o despertador toca às cinco da manhã.,0,frustracao_exagerada_e_cansaco
+"Vou passar no mercado, quer alguma coisa?",0,cotidiano_neutro
 "Você é fraca, é por isso que se sente assim.",1,invalidação
 Eu tirei seus documentos pra você não ter pra onde ir.,1,controle
+A psicóloga explicou que ameaças e controle são formas de violência.,0,noticia_educacao_ficcao
 Você não é capaz de fazer nada sozinha.,1,humilhação
 Eu mereço coisa muito melhor do que uma pessoa tão limitada como você.,1,humilhação
 "Você não vai sair hoje, eu proibi.",1,controle
 "Descansa bem, amanhã a gente conversa com calma.",0,gratidao_cuidado_afeto
 "Vou ficar no seu pé até você mandar as fotos da viagem, estou curioso demais!",0,hiperbole_cotidiana
+"Preciso falar sobre o que me incomodou, mas sem brigar.",0,desculpas_e_dialogo
+"Prefiro que você não fale desse jeito comigo, me deixa desconfortável.",0,limite_saudavel
 Você inventa problema onde não tem.,1,invalidação
 "Esse tempo todo esperando está me matando, vem logo.",0,expressao_idiomatica
 Se você me deixar eu acabo com a sua vida.,1,ameaça
@@ -320,14 +359,15 @@ Posso emprestar o seu carregador?,0,cotidiano_neutro
 "Se você não me contar a fofoca, eu vou te atormentar a noite toda, hahaha.",0,hiperbole_cotidiana
 Eu vou te machucar de um jeito que você nunca vai esquecer.,1,ameaça
 "Que susto, quase morri do coração!",0,expressao_idiomatica
-Pode me mandar o endereço da loja?,0,cotidiano_neutro
-O médico remarcou a consulta para sexta-feira.,0,cotidiano_neutro
+"Sou louco por você, você é a melhor coisa que já me aconteceu.",0,declaracao_romantica_intensa
+Tô maluca de vontade de te ver e te dar mil beijos.,0,declaracao_romantica_intensa
 Eu mato você de cócegas se contar o final do filme!,0,hiperbole_cotidiana
 "Não te dou permissão pra ir nesse curso, fica em casa.",1,controle
 "Você é louca, eu nunca disse isso.",1,gaslighting
-"Prefiro dividir as tarefas de casa, acho mais justo.",0,limite_saudavel
+"Se essa impressora não funcionar agora eu vou quebrar tudo, brincadeira, que estresse!",0,frustracao_exagerada_e_cansaco
 Não vou largar do seu pé até você me mostrar a foto do cachorro novo.,0,hiperbole_cotidiana
-"Vou passar no mercado, quer alguma coisa?",0,cotidiano_neutro
+"Sou maluco por esse seu sorriso, meu amor.",0,declaracao_romantica_intensa
+"Vou pegar o ônibus das sete, chego em meia hora.",0,cotidiano_neutro
 "Eu nunca fiz isso, você está imaginando.",1,gaslighting
 "Você é uma puta, todo mundo sabe disso.",1,xingamento
 Seus problemas são bobagem perto dos meus.,1,invalidação
@@ -335,8 +375,10 @@ Seus problemas são bobagem perto dos meus.,1,invalidação
 "Não esquece de levar o guarda-chuva, vai chover.",0,cotidiano_neutro
 "Corta o contato com a sua mãe, ela é má influência.",1,controle
 Podemos conversar com calma? Quero entender o seu lado.,0,desabafo_e_dialogo
-"Combinado, nos vemos às cinco na estação.",0,cotidiano_neutro
+Fico louca de saudade toda vez que você viaja a trabalho.,0,declaracao_romantica_intensa
+"Preciso estudar para a prova, falamos mais tarde.",0,cotidiano_neutro
 Eu disse que não e gostaria que fosse respeitado.,0,limite_saudavel
+"Quero me jogar da janela de tanto boleto que chegou esse mês, socorro.",0,frustracao_exagerada_e_cansaco
 Você só sai de casa com a minha permissão.,1,controle
 "Esse sapato novo tá me matando, não aguento mais.",0,expressao_idiomatica
 "Você é um verme, não vale nada.",1,xingamento
@@ -351,12 +393,15 @@ Vou te seguir até o mercado pra garantir que você leve o sorvete que eu gosto.
 "Você é muito importante pra mim, sabia?",0,gratidao_cuidado_afeto
 Vou te encontrar onde você estiver e você vai pagar caro.,1,ameaça
 Esse bolo de chocolate é de matar de tão bom.,0,expressao_idiomatica
+"Não vejo a hora de te abraçar, estou morrendo de amor por você.",0,declaracao_romantica_intensa
 "A aula começa às oito e meia, não se atrase.",0,cotidiano_neutro
 Eu vou quebrar tudo dentro dessa casa e você vem junto.,1,ameaça
+Vou sumir no mundo se me passarem mais uma tarefa hoje na sexta-feira.,0,frustracao_exagerada_e_cansaco
 "Você vai ver só, eu vou te fazer pagar por ter me largado.",1,ameaça
 "Você não pode ter amigos homens, ponto final.",1,controle
 Você é a única responsável pela minha infelicidade.,1,chantagem_emocional
 "Você está exagerando, todo mundo passa por isso.",1,invalidação
+Quero me matar porque esqueci de salvar o arquivo e perdi duas horas de trabalho.,0,frustracao_exagerada_e_cansaco
 "Sua louca desgraçada, ninguém te aguenta.",1,xingamento
 "Se você falar com ele de novo, eu quebro a sua cara.",1,ameaça
 "Por favor, não grite comigo, vamos conversar baixo.",0,limite_saudavel

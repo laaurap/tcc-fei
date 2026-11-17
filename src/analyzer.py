@@ -18,6 +18,7 @@ from contexto import (
     eh_contexto_nao_abusivo,
     neutralizar_expressoes,
     tem_abuso_explicito,
+    tem_risco_dano_fisico,
 )
 
 # Categorias de violência psicológica e descrições para o modelo zero-shot
@@ -159,6 +160,7 @@ def analisar_texto(texto: str) -> dict:
     maior_score_agressao_contexto = 0.0
     maior_score_supervisionado = 0.0
     neutralizadas_supervisionado = False
+    ha_risco_dano_fisico = False
 
     for sentenca, sentenca_original in zip(sentencas, sentencas_originais):
         if expressoes_neutralizadas and not _tem_conteudo_apos_neutralizacao(
@@ -227,6 +229,8 @@ def analisar_texto(texto: str) -> dict:
                     notas_sentenca[chave_cat] = score
             if score > scores_por_categoria[chave_cat]:
                 scores_por_categoria[chave_cat] = score
+        if tem_risco_dano_fisico(sentenca_original, notas_sentenca, score_sup):
+            ha_risco_dano_fisico = True
         scores_por_sentenca.append((sentenca_original, notas_sentenca))
 
     # --- Veredicto e nível de risco ---
@@ -277,7 +281,7 @@ def analisar_texto(texto: str) -> dict:
             f"com nível de confiança de {score_exibido:.0%}."
         )
     elif (
-        qtd <= 2
+        not ha_risco_dano_fisico
         or score_geral < 0.70
         or maior_score_agressao_contexto < LIMIAR_CONTEXTO_AGRESSAO_ALTO
         or (_mod_sup is not None and maior_score_supervisionado < LIMIAR_SUP_ALERTA and not tem_abuso_explicito(texto))
@@ -299,12 +303,12 @@ def analisar_texto(texto: str) -> dict:
         nivel_risco = "ALTO"
         if n == 1:
             justificativa = (
-                f"Identificado um padrão claro de violência psicológica: {lista}. "
+                f"Identificado um padrão grave de violência psicológica / ameaça à integridade: {lista}. "
                 f"Confiança do modelo: {score_exibido:.0%}."
             )
         else:
             justificativa = (
-                f"Identificados {n} padrões claros de violência psicológica: {lista}. "
+                f"Identificados {n} padrões graves de violência psicológica / ameaça à integridade: {lista}. "
                 f"Confiança média do modelo: {score_exibido:.0%}."
             )
 
